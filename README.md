@@ -1,0 +1,1 @@
+- on installation step 2 - compare to claude 
