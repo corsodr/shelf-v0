@@ -1,1 +1,5 @@
-- on installation step 2 - compare to claude 
+Use Google auth for solo. 
+
+Review
+- add middleware to keep session alive?
+- session vs token
