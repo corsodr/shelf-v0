@@ -1,4 +1,7 @@
-Next
-- add email + pw sign up 
-- review files + how they work 
-- build core functionality fast 
+# Today 
+- set up database 
+- core features  
+
+## Review 
+- signin, signout, page.tsx
+- @ path 

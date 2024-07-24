@@ -1,18 +1,15 @@
-import { signIn } from "@/auth"
+import { auth } from "@/auth";
+import { SignIn } from "@/app/components/SignIn";
+import { SignOut } from "@/app/components/SignOut";
 
-export default function Home() {
+export default async function Page() {
+  let session = await auth();
+  let user = session?.user?.email;
+
   return (
-    <main>
-      <h1 className="text-lg">Yo</h1>
-      <form
-      action={async () => {
-        "use server"
-        await signIn("google")
-      }}
-    >
-      <button type="submit">Signin with Google</button>
-    </form>
-      
-    </main>
+    <section>
+      <h1>Home</h1>
+      <div>{user ? <SignOut>{`Welcome ${user}`}</SignOut> : <SignIn />}</div>
+    </section>
   );
 }
