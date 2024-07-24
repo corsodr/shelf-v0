@@ -3,5 +3,5 @@
 - core features  
 
 ## Review 
-- signin, signout, page.tsx
+- auth.ts, SignIn, SignOut, page.tsx - compare to docs 
 - @ path 
