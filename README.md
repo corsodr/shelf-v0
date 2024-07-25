@@ -1,8 +1,12 @@
 ## Now 
-- change to JWT
+- user db operations 
 
 ## Next
-- how to apply auth as I build 
-- check @ path 
-- plan work
-- build 
+- review auth.ts code + claude info 
+- compare auth.ts to ethan example 
+- plan work 
+- build
+
+## Review 
+- make auth config more explicit? 
+- check @ aliast 
