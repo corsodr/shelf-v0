@@ -1,7 +1,16 @@
-# Today 
-- set up database 
-- core features  
+## Now 
+- review db 
+    - tables
+    - env variables 
+    - when is it used? 
+- test auth + db 
 
-## Review 
-- auth.ts, SignIn, SignOut, page.tsx - compare to docs 
-- @ path 
+## Next
+- review how to apply auth as I build 
+- review @ path 
+- plan work 
+- build 
+
+
+## Notes
+- use auth to protect things
