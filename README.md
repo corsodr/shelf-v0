@@ -1,16 +1,8 @@
 ## Now 
-- review db 
-    - tables
-    - env variables 
-    - when is it used? 
-- test auth + db 
+- change to JWT
 
 ## Next
-- review how to apply auth as I build 
-- review @ path 
-- plan work 
+- how to apply auth as I build 
+- check @ path 
+- plan work
 - build 
-
-
-## Notes
-- use auth to protect things
