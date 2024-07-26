@@ -3,8 +3,11 @@ import Link from "next/link";
 import { SignIn } from "@/app/components/SignIn";
 import { SignOut } from "@/app/components/SignOut";
 
+// review code 
 // layout 
 // typescript it baby 
+// why async 
+// review auth approach 
 export default async function LandingPage() {
   const session = await auth();
 
