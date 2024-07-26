@@ -1,18 +1,15 @@
 Let it rip!!!!
 
 ## Now 
-- build landing page 
+- review flow
 
-## Flight 
-- build landing page 
-- build dashboard page 
-
-## Weekend
+## Next 
 - review code comments 
 - review protecting resources + custom pages docs
 - diagram auth / session/ db process 
 - make auth config more explicit? 
 - check @ alias
-
-## Week 
-- deploy shelf solo 
+- test with new users 
+- create layouts 
+- landing page mvp 
+- dashboard mvp 

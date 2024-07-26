@@ -1,15 +1,15 @@
 import { auth } from "@/auth";
-import Link from "next/link";
+import { redirect } from "next/navigation";
 import { SignIn } from "@/app/components/SignIn";
-import { SignOut } from "@/app/components/SignOut";
 
-// review code 
-// layout 
-// typescript it baby 
-// why async 
-// review auth approach 
+// review code - compare to docs / best practices - keep it simple 
 export default async function LandingPage() {
   const session = await auth();
+
+  // If the user is already signed in, redirect to the dashboard
+  if (session?.user) {
+    redirect("/dashboard");
+  }
 
   return (
     <div className="container mx-auto px-4">
@@ -27,20 +27,10 @@ export default async function LandingPage() {
 
         <section className="my-8">
           <h2 className="text-2xl font-semibold mb-4">Get Started</h2>
-          {session ? (
-            <div>
-              <p>Welcome back, {session.user.name}!</p>
-              <Link href="/dashboard" className="text-blue-500 hover:underline">
-                Go to Dashboard
-              </Link>
-              <SignOut>Sign out</SignOut>
-            </div>
-          ) : (
-            <div>
-              <p>Sign in to start using [Your App Name]</p>
-              <SignIn />
-            </div>
-          )}
+          <div>
+            <p>Sign in to start using [Your App Name]</p>
+            <SignIn />
+          </div>
         </section>
       </main>
 
