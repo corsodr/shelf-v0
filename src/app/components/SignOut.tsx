@@ -1,5 +1,6 @@
 import { signOut } from "@/auth";
 
+// remove children? 
 export function SignOut({ children }: { children: React.ReactNode }) {
   return (
     <form

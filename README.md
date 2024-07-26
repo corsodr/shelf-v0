@@ -1,12 +1,15 @@
 ## Now 
-- user db operations 
+- review session management docs 
 
-## Next
-- review auth.ts code + claude info 
-- compare auth.ts to ethan example 
-- plan work 
-- build
+## Flight 
+- build landing page 
+- build dashboard page 
 
-## Review 
+## Weekend
+- review protecting resources + custom pages docs
+- diagram auth / session/ db process 
 - make auth config more explicit? 
-- check @ aliast 
+- check @ alias
+
+## Week 
+- build shelf solo 

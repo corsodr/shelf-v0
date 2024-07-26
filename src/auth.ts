@@ -5,6 +5,8 @@ import { sql } from '@vercel/postgres';
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
+    // does it make sense to run this function every time someone signs in?
+    // should I use account and profile? 
     async signIn({ user, account, profile }) {
       try {
         const result = await sql`
