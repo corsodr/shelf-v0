@@ -1,5 +1,6 @@
 import { signIn } from "@/auth";
 
+// review how server actions works 
 export function SignIn() {
   return (
     <form
@@ -8,8 +9,10 @@ export function SignIn() {
         await signIn("google", { redirectTo: "/dashboard" })
       }}
     >
-      <p>You are not logged in</p>
-      <button type="submit">Sign in with Google</button>
+      {/* improve button styling - look at Claude homepage  */}
+      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        Continue with Google
+      </button>
     </form>
   );
 }

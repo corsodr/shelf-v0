@@ -1,7 +1,6 @@
 import { signOut } from "@/auth";
 
-// remove children? 
-export function SignOut({ children }: { children: React.ReactNode }) {
+export function SignOut() {
   return (
     <form
       action={async () => {
@@ -9,8 +8,7 @@ export function SignOut({ children }: { children: React.ReactNode }) {
         await signOut();
       }}
     >
-      <p>{children}</p>
-      <button type="submit">Sign out</button>
+      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Sign out</button>
     </form>
   );
 }
