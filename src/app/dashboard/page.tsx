@@ -6,7 +6,6 @@ import { SignOut } from "@/app/components/SignOut";
 export default async function DashboardPage() {
   const session = await auth();
 
-  // If the user is not logged in, redirect them to the landing page
   if (!session?.user) {
     redirect("/");
   }
@@ -31,13 +30,11 @@ export default async function DashboardPage() {
 
         <section className="my-8">
           <h2 className="text-2xl font-semibold mb-4">Your Activity</h2>
-          {/* Add components or information relevant to your app */}
           <p>Here you can display user-specific information or actions.</p>
         </section>
 
         <section className="my-8">
           <h2 className="text-2xl font-semibold mb-4">Quick Actions</h2>
-          {/* Add buttons or links for common actions in your app */}
           <button className="bg-blue-500 text-white px-4 py-2 rounded">
             New Action
           </button>

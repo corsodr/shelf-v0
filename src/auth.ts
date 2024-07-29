@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import { sql } from '@vercel/postgres';
 
+// review how true and false how are used 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {

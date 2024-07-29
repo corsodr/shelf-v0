@@ -1,15 +1,23 @@
-Let it rip!!!!
+Light. Pace. Expose. 
 
 ## Now 
-- review flow
-
-## Next 
-- review code comments 
-- review protecting resources + custom pages docs
-- diagram auth / session/ db process 
-- make auth config more explicit? 
-- check @ alias
-- test with new users 
-- create layouts 
 - landing page mvp 
-- dashboard mvp 
+
+## Week 
+- test code with new users
+- dashboard mvp - order of operations 
+- api 
+- db 
+- components 
+- deploy 
+
+## Review 
+- delete middleware? 
+- layouts
+- upserts
+- auth.ts - comments, code, should I make it more explicit?
+- link google sub and db id? 
+- what makes a session valid 
+
+## References 
+https://claude.ai/d
