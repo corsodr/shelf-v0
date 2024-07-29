@@ -1,36 +1,15 @@
 Rigor. Money. 
 
 ## Now 
-- update dashboard + sign out 
-
-## Today 
-- talk to Claude about system design 
-- start implementing dashboard 
-
-## Database 
-[] collections table schema 
-[] link previews table schema 
-
-## API 
-- write this out myself 
-- start simple 
-
-For authenticated user: 
-GET collections
-POST new collection 
-PUT collection 
-DELETE collection 
-
-What link preview operations do I need?  
-
-## Frontend 
-- should I use /dashboard for everything? 
+[] endpoints 
 
 ## Week 
-- dashboard plan - api, db, frontend 
+- frontend 
 - deploy 
 
 ## Review 
+- should I rename link previews table to previews? 
+- should I have any link preview endpoints? 
 - delete middleware? 
 - upserts
 - auth.ts - comments, code, should I make it more explicit?
