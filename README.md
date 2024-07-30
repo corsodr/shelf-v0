@@ -1,20 +1,23 @@
 Rigor. Money. 
+## Today 
+- implement API + db operations 
+- test endpoints 
 
-## Now 
-[] endpoints 
-
-## Week 
+## Next 
 - frontend 
 - deploy 
 
 ## Review 
-- should I rename link previews table to previews? 
-- should I have any link preview endpoints? 
+- code comments 
+- claude utils/authCheck.ts suggestion 
 - delete middleware? 
+- rename link previews table to previews? 
+- link preview endpoints? 
 - upserts
 - auth.ts - comments, code, should I make it more explicit?
 - link google sub and db id? 
 - what makes a session valid 
+- auth useContext 
 
 ## References 
 https://claude.ai/d
