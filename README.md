@@ -1,23 +1,16 @@
-Rigor. Money. 
-## Today 
-- implement API + db operations 
-- test endpoints 
+Rigor. Money. Learning. 
+
+## Now
 
 ## Next 
+- other endpoints 
 - frontend 
+- feedback
 - deploy 
 
-## Review 
-- code comments 
-- claude utils/authCheck.ts suggestion 
-- delete middleware? 
-- rename link previews table to previews? 
-- link preview endpoints? 
-- upserts
-- auth.ts - comments, code, should I make it more explicit?
+## Review  
+- using email to query db 
 - link google sub and db id? 
-- what makes a session valid 
-- auth useContext 
-
-## References 
-https://claude.ai/d
+- API auth approach 
+- delete middleware? 
+- SQL queries

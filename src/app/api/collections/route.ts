@@ -2,14 +2,6 @@ import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
 
-// diagram query - reference claude explanation 
-// test get endpoint 
-// should I not use email to query db? - check walkable 
-// review auth approach 
-// should I use an ORM? 
-// implement other endpoints 
-// get feedback 
-
 export async function GET() {
   const session = await auth();
 
@@ -20,6 +12,7 @@ export async function GET() {
   const userEmail = session.user.email;
 
   try {
+    // should I add ORDER BY? 
     const collectionsResult = await sql`
       SELECT 
         collections.id,
@@ -41,8 +34,6 @@ export async function GET() {
         users.email = ${userEmail}
       GROUP BY 
         collections.id, collections.name
-      ORDER BY 
-        collections.name;
     `;
 
     return NextResponse.json({ collections: collectionsResult.rows }, { status: 200 }); 
