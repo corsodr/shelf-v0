@@ -2,16 +2,19 @@ import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
 
+// using email to query db doesn't feel right 
+// review what makes a session valid 
 export async function GET() {
   const session = await auth();
 
   if (!session?.user?.email) {
-    return NextResponse.json({ error: "Unauthorized or email not found" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   
   const userEmail = session.user.email;
 
   try {
+    // type query out myself 
     // should I add ORDER BY? 
     const collectionsResult = await sql`
       SELECT 
@@ -42,7 +45,51 @@ export async function GET() {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
-  
-export async function POST(request: Request) {
-    // create a new collection 
+
+// test it 
+// why use SQL transaction?
+// review BEGIN, COMMIT, ROLLBACK
+// type out queries myself 
+export async function POST(req: Request) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { title, links } = await req.json();
+
+    // review last check + if I should do this here or on client?
+    if (!title || !links || !Array.isArray(links)) {
+      return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+    }
+
+    await sql`BEGIN`;
+
+    const collectionResult = await sql`
+      INSERT INTO collections (user_id, name)
+      VALUES ((SELECT id FROM users WHERE email = ${session.user.email}), ${title})
+      RETURNING id
+    `;
+
+    const collectionId = collectionResult.rows[0].id;
+
+    // review how this works 
+    for (const link of links) {
+      await sql`
+        INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
+        VALUES (${collectionId}, ${link.url}, ${link.title}, ${link.favicon}, ${link.description}, ${link.image})
+      `;
+    }
+
+    await sql`COMMIT`;
+
+    return NextResponse.json({ message: "Collection created successfully", collectionId }, { status: 201 });
+
+  } catch (error) {
+    await sql`ROLLBACK`;
+    console.error('Error posting collection', error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
 }

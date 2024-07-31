@@ -1,16 +1,21 @@
 Rigor. Money. Learning. 
 
-## Now
+## Today
 
-## Next 
-- other endpoints 
-- frontend 
-- feedback
+## Next  
+- frontend for create collection 
+- frontend end for read collection 
+- frontend for get collections 
+- update collection 
+- delete collection 
+- user profile? 
 - deploy 
+- feedback 
 
 ## Review  
-- using email to query db 
+- compare SQL queries to previous Shelf version
+- using email to query db - look at routes - get feedback
 - link google sub and db id? 
 - API auth approach 
 - delete middleware? 
-- SQL queries
+- should I add link previews when user adds them?

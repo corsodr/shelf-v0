@@ -1,6 +1,6 @@
-// should I use GET?
 // check params usage 
 
+// do I need this? 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
     // Logic to get a specific collection
   }
