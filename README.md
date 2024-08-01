@@ -1,7 +1,7 @@
-Hard is good. Follow through. Use it. Get feedback. 
+Embrace the pain. Get feedback. Make money. 
 
 ## Now 
-- frontend for create collection 
+- test it 
 
 ## Friday 
 - use session id instead of email 
@@ -11,6 +11,7 @@ Hard is good. Follow through. Use it. Get feedback.
 - review code comments 
 
 ## Next 
+- frontend for create collection
 - frontend end for read collection 
 - frontend for get collections  
 - update collection 

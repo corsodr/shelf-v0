@@ -2,19 +2,20 @@ import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
 
-// review auth approach - compare to docs 
+// review code line by line 
 export async function GET() {
   const session = await auth();
+  console.log("Session:", session);  // Add this line
 
-  if (!session?.user?.email) {
+
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   
-  const userEmail = session.user.email;
+  const userId = session.user.id;
 
-  try {
-    // type query out myself 
-    // should I add ORDER BY? 
+  try { 
+    // should I use order by?
     const collectionsResult = await sql`
       SELECT 
         collections.id,
@@ -29,11 +30,10 @@ export async function GET() {
           'created_at', link_previews.created_at
         )) AS link_previews
       FROM 
-        users
-        JOIN collections ON users.id = collections.user_id
+        collections
         LEFT JOIN link_previews ON collections.id = link_previews.collection_id
       WHERE 
-        users.email = ${userEmail}
+        collections.user_id = ${userId}
       GROUP BY 
         collections.id, collections.name
     `;
@@ -48,14 +48,13 @@ export async function GET() {
 export async function POST(req: Request) {
   const session = await auth();
 
-  if (!session?.user?.email) {
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
     const { title, links } = await req.json();
 
-    // review last check + if I should do this here or on client?
     if (!title || !links || !Array.isArray(links)) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
@@ -64,14 +63,20 @@ export async function POST(req: Request) {
 
     const collectionResult = await sql`
       INSERT INTO collections (user_id, name)
-      VALUES ((SELECT id FROM users WHERE email = ${session.user.email}), ${title})
+      VALUES (${session.user.id}, ${title})
       RETURNING id
     `;
 
     const collectionId = collectionResult.rows[0].id;
 
-    // use a bulk insert  
-    for (const link of links) {
+    await sql`
+      INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
+      SELECT ${collectionId}, url, title, favicon, description, image
+      FROM json_populate_recordset(null::link_previews, ${JSON.stringify(links)})
+    `;
+
+     // use a bulk insert  
+     for (const link of links) {
       await sql`
         INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
         VALUES (${collectionId}, ${link.url}, ${link.title}, ${link.favicon}, ${link.description}, ${link.image})
@@ -88,3 +93,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
+
+
+
