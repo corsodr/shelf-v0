@@ -1,11 +1,18 @@
-Rigor. Money. Learning. 
+Hard is good. Follow through. Use it. Get feedback. 
 
-## Today
-
-## Next  
+## Now 
 - frontend for create collection 
+
+## Friday 
+- use session id instead of email 
+- link google sub and db id? 
+- use or delete middleware? 
+- type out all queries myself 
+- review code comments 
+
+## Next 
 - frontend end for read collection 
-- frontend for get collections 
+- frontend for get collections  
 - update collection 
 - delete collection 
 - user profile? 
@@ -13,9 +20,4 @@ Rigor. Money. Learning.
 - feedback 
 
 ## Review  
-- compare SQL queries to previous Shelf version
-- using email to query db - look at routes - get feedback
-- link google sub and db id? 
-- API auth approach 
-- delete middleware? 
-- should I add link previews when user adds them?
+- should I add link previews to db when user adds them or when they save a collection? 

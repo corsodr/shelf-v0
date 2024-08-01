@@ -2,12 +2,12 @@ import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import { sql } from '@vercel/postgres';
 
-// review how true and false how are used 
+// change this to get user id and add it to JWT 
+// confirm this is a good approach - compare to docs + examples 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
-    // should I use account and profile? 
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       try {
         const result = await sql`
           INSERT INTO users (email, name, image_url)
@@ -25,4 +25,3 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
 })
 
-// add more db user operations if needed

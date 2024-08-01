@@ -2,8 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
 
-// using email to query db doesn't feel right 
-// review what makes a session valid 
+// review auth approach - compare to docs 
 export async function GET() {
   const session = await auth();
 
@@ -46,10 +45,6 @@ export async function GET() {
   }
 }
 
-// test it 
-// why use SQL transaction?
-// review BEGIN, COMMIT, ROLLBACK
-// type out queries myself 
 export async function POST(req: Request) {
   const session = await auth();
 
@@ -75,7 +70,7 @@ export async function POST(req: Request) {
 
     const collectionId = collectionResult.rows[0].id;
 
-    // review how this works 
+    // use a bulk insert  
     for (const link of links) {
       await sql`
         INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
