@@ -2,10 +2,8 @@ import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
 
-// review code line by line 
 export async function GET() {
   const session = await auth();
-
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
