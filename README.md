@@ -1,5 +1,6 @@
 Solve user problems and make money.
 One brick at a time. 
+Focus on what works. 
 
 ## Today 
 - frontend for create collection 
