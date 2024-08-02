@@ -1,12 +1,7 @@
-Embrace the pain. Get feedback. Make money. 
+I want to solve user problems and make money.
 
-## Now 
-- test it 
 
 ## Friday 
-- use session id instead of email 
-- link google sub and db id? 
-- use or delete middleware? 
 - type out all queries myself 
 - review code comments 
 
@@ -20,5 +15,6 @@ Embrace the pain. Get feedback. Make money.
 - deploy 
 - feedback 
 
-## Review  
+## Review 
 - should I add link previews to db when user adds them or when they save a collection? 
+- should I use auth middleware? 

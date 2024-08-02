@@ -5,7 +5,6 @@ import { sql } from '@vercel/postgres';
 // review code line by line 
 export async function GET() {
   const session = await auth();
-  console.log("Session:", session);  // Add this line
 
 
   if (!session?.user?.id) {

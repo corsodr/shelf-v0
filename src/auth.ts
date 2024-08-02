@@ -2,14 +2,12 @@ import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
 import { sql } from '@vercel/postgres';
 
-// compare to docs 
-// review claude + my notes 
-// review line by line 
-// more typescript? 
+// more typescritp 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user}) {
+    
       try {
         const result = await sql`
           INSERT INTO users (email, name, image_url)
@@ -33,8 +31,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (session.user) {
-        // fix this 
-        session.user.id = token.userId;
+        // create custom session type? 
+        session.user.id = token.userId as string;
       }
       return session;
     },
