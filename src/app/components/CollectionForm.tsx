@@ -29,6 +29,7 @@ export default function CollectionForm() {
       const data = await response.json();
       // fix this + why use callback
       setPreviews((prevPreviews) => [...prevPreviews, data]);
+      setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
     }

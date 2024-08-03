@@ -1,4 +1,5 @@
-export default function LinkPreview() {
+export default function LinkPreview({ preview }) {
+  const { title, url, image } = preview;
   return (
     <div className="flex mb-8">
       <a 
@@ -8,14 +9,11 @@ export default function LinkPreview() {
       >
         <div className="flex hover:bg-slate-100 rounded-lg">
           <img 
-            src={thumbnail} 
+            src={image} 
             alt={`Thumbnail for ${title}`} 
             className="object-cover w-[192px] h=[108px] rounded-lg" 
           />
-          <div className="flex flex-col justify-center w-[500px] ml-4">
-            <h3 className="text-lg font-bold">{title}</h3>
-            <p className="text-gray-500">{channel}</p>
-          </div>
+          <h3 className="text-lg font-bold">{title}</h3>
         </div>
       </a>
     </div>

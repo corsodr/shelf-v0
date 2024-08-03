@@ -1,13 +1,14 @@
 import LinkPreview from '@/app/components/LinkPreview';
 
-export default function LinkPreviewList({ }) {
+// preview id for key 
+export default function LinkPreviewList({ previews }) {
   return (
     <div>
-      {videoPreviews.map((videoPreview) => (
+      {previews.map((preview, index) => (
         <LinkPreview 
-          key={videoPreview.id} 
-          videoPreview={videoPreview} 
-          deleteVideoPreview={deleteVideoPreview}  />
+            key={index}
+            preview={preview}
+        />
       ))}
     </div>
   );

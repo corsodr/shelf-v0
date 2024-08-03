@@ -1,10 +1,7 @@
 Build. Compete. 
 
-## Today 
-- preview list 
-- preview 
-
 ## Next 
+- link previews - add data, improve styling, test it, add fallback 
 - typescript code 
 - frontend for view collection 
 - frontend for get collections 
