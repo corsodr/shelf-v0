@@ -1,9 +1,6 @@
 'use client'
 import { use, useState } from "react";
 
-// reference youtube-previews 
-
-// get preview data
 // preview component 
 // preview list component 
 // collection component 
@@ -11,15 +8,35 @@ import { use, useState } from "react";
 // api / stage management 
 
 // use form? 
+// check var names 
 // componentize
 export function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [preview, setPreview] = useState(null); 
 
-  const addLink = () => {
-    // get link preview data 
-    // check var name 
+  // loading + error state 
+  const fetchPreview = async () => {
+    try {
+      const response = await fetch('https://link-preview-api-v1.vercel.app/api/preview', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({url: link})
+      });
+
+      // why do this? 
+      if (!response.ok) {
+        throw new Error(`HTTP error. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('preview', data);
+      setPreview(data);
+    } catch (error) {
+      console.error('Error fetching preview', error);
+    }
   }
     
   return (
@@ -43,7 +60,7 @@ export function CollectionForm() {
         />
         <button 
           className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-          onClick={addLink}
+          onClick={fetchPreview}
         >
           Add
         </button>

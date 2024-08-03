@@ -1,12 +1,9 @@
-Solve user problems and make money.
-One brick at a time. 
-Focus on what works. 
+Build.  
 
 ## Today 
 - frontend for create collection 
 
 ## Next 
-- frontend for create collection 
 - frontend for view collection 
 - frontend for get collections 
 - update collection 
