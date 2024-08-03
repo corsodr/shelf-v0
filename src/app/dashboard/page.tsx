@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { SignOut } from "@/app/components/SignOut";
-import { CollectionForm } from "@/app/components/CollectionForm";
+import CollectionForm from "@/app/components/CollectionForm";
 
 export default async function DashboardPage() {
   const session = await auth();

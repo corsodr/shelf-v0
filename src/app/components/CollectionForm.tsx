@@ -1,19 +1,14 @@
 'use client'
 import { use, useState } from "react";
-
-// preview component 
-// preview list component 
-// collection component 
-// collection list component 
-// api / stage management 
+import LinkPreviewList from '@/app/components/LinkPreviewList';
 
 // use form? 
 // check var names 
 // componentize
-export function CollectionForm() {
+export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  const [preview, setPreview] = useState(null); 
+  const [previews, setPreviews] = useState([]); 
 
   // loading + error state 
   const fetchPreview = async () => {
@@ -32,8 +27,8 @@ export function CollectionForm() {
       }
 
       const data = await response.json();
-      console.log('preview', data);
-      setPreview(data);
+      // fix this + why use callback
+      setPreviews((prevPreviews) => [...prevPreviews, data]);
     } catch (error) {
       console.error('Error fetching preview', error);
     }
@@ -65,6 +60,7 @@ export function CollectionForm() {
           Add
         </button>
       </div>
+      <LinkPreviewList previews={previews} /> 
     </div>
   );
 }

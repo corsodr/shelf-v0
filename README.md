@@ -1,14 +1,17 @@
-Build.  
+Build. Compete. 
 
 ## Today 
-- frontend for create collection 
+- preview list 
+- preview 
 
 ## Next 
+- typescript code 
 - frontend for view collection 
 - frontend for get collections 
 - update collection 
 - delete collection 
 - user profile? 
+- review 
 - styling 
 - deploy 
 - feedback 
@@ -22,3 +25,6 @@ Build.
 - API code 
 - should I add link previews to db when user adds them or when they save a collection? 
 - should I use auth middleware? 
+
+## References 
+- Arc browser library - try it 
