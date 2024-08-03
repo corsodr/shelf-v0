@@ -1,19 +1,16 @@
-Build. Compete. 
+Small. Every day. 
 
 ## Next 
-- link previews - add data, improve styling, test it, add fallback 
+- link preview
 - typescript code 
-- frontend for view collection 
-- frontend for get collections 
-- update collection 
+- collection 
+- collection list 
+- update collection
 - delete collection 
-- user profile? 
-- review 
-- styling 
-- deploy 
-- feedback 
+- user profile/settings 
 
 ## Review 
+- nyt link previews 
 - use Google/Auth.js user id for user id in db?
 - synching Google data?
 - separate sign in and sign up?

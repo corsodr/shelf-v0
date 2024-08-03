@@ -2,15 +2,11 @@
 import { use, useState } from "react";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 
-// use form? 
-// check var names 
-// componentize
 export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [previews, setPreviews] = useState([]); 
 
-  // loading + error state 
   const fetchPreview = async () => {
     try {
       const response = await fetch('https://link-preview-api-v1.vercel.app/api/preview', {
@@ -21,13 +17,11 @@ export default function CollectionForm() {
         body: JSON.stringify({url: link})
       });
 
-      // why do this? 
       if (!response.ok) {
         throw new Error(`HTTP error. Status: ${response.status}`);
       }
 
       const data = await response.json();
-      // fix this + why use callback
       setPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
@@ -44,14 +38,12 @@ export default function CollectionForm() {
         onChange={(e) => setTitle(e.target.value)}
         className="border border-gray-400 p-2 rounded-lg"
       />
-      {/* why does using flex here increase the button height? */}
       <div className="flex gap-4">
         <input 
           type="url" 
           placeholder="Link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          // why is w-full necessary?
           className="border border-gray-400 p-2 rounded-lg w-full"
         />
         <button 
