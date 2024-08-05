@@ -1,28 +1,30 @@
 ## Now
- - collection form styling 
+- save collection 
+- collection form styling 
 
 ## Today 
-- collection form styling 
-- save collection 
+- typescript code
 
 ## Tuesday 
 - collection component 
 - collection list component 
-- update collection 
+- edit collection - add, delete, reorder 
 - delete collection 
 
 ## Wednesday 
-- typescript code
-- delete preview 
-- reorder previews 
+- user profile/settings 
+- styling 
 
 ## Thursday 
-- user profile/settings 
 - mobile  
 - review 
 
 ## Friday 
 - deploy 
+
+## Weekend 
+- test
+- feedback 
 
 ## Test urls 
 https://www.youtube.com/watch?v=KBCA3UfbOzI 
