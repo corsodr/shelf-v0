@@ -3,7 +3,7 @@ export default function LinkPreview({ preview }) {
   console.log('preview', preview);
 
   return (
-    <div className="flex mb-8">
+    <div className="flex mb-2">
       <a 
         href={url}
         target="_blank"

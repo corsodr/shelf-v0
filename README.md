@@ -1,9 +1,8 @@
 Building. 
 
 ## Now 
-- typescript code 
-    - backend 
-    - frontend
+- improve styling 
+- reference youtube playlist 
 
 ## Tuesday 
 - review + finish typing - keep it light - compare to db + link preview API - draw mental model if needed 

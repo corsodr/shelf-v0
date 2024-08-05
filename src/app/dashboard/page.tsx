@@ -21,7 +21,6 @@ export default async function DashboardPage() {
 
       <main className="flex-grow container mx-auto px-4 py-4">
         <section className="my-8">
-          <h2 className="text-2xl font-bold mb-8">{session.user.name}</h2>
           <CollectionForm /> 
         </section>
       </main>

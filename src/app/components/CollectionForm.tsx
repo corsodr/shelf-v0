@@ -2,9 +2,7 @@
 import { useState } from "react";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 
-// form size 
-// style title
-
+// spacing 
 // loading state 
 // error handling 
 export default function CollectionForm() {
@@ -65,13 +63,13 @@ export default function CollectionForm() {
   };
   
   return (
-    <form onSubmit={submitCollection} className="flex flex-col w-[800px] gap-2">
+    <form onSubmit={submitCollection} className="flex flex-col w-[600px] gap-3">
       <input 
         type="text" 
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="p-2 rounded-lg text-3xl font-bold focus:outline-none placeholder-gray-300"
+        className="text-4xl font-bold focus:outline-none placeholder-gray-300"
         autoFocus
         required
       />
@@ -82,11 +80,11 @@ export default function CollectionForm() {
           placeholder="Link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="border border-gray-400 p-2 rounded-lg w-full"
+          className="border border-gray-400 p-3 rounded-lg w-full"
         />
         <button 
           type="button"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className="bg-blue-500 text-white px-5 py-3 rounded-lg"
           onClick={fetchPreview}
         >
           Add
@@ -94,7 +92,7 @@ export default function CollectionForm() {
       </div>
       <button 
         type="submit"
-        className="bg-green-500 text-white px-4 py-2 rounded-lg mt-4"
+        className="bg-blue-500 text-white px-5 py-3 rounded-lg mt-4 self-start"
       >
         Save
       </button>
