@@ -49,6 +49,7 @@ export async function POST(req: Request) {
   }
 
   try {
+    // should I type here or in request param? 
     const { title, links } = await req.json();
 
     if (!title || !links || !Array.isArray(links)) {

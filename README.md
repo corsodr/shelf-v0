@@ -1,10 +1,12 @@
-## Now
-- collection form styling - mvp 
+Building. 
 
-## Today 
-- typescript code
+## Now 
+- typescript code 
+    - backend 
+    - frontend
 
 ## Tuesday 
+- review + finish typing - keep it light - compare to db + link preview API - draw mental model if needed 
 - collection component 
 - collection list component 
 - edit collection - add, delete, reorder 
@@ -12,7 +14,7 @@
 
 ## Wednesday 
 - user profile/settings 
-- styling 
+- styling - find good old version 
 
 ## Thursday 
 - mobile  
@@ -40,3 +42,6 @@ https://rauchg.com/
 - should I add link previews to db when user adds them or when they save a collection? 
 - should I use auth middleware? 
 - favicon fallback? 
+- file structure (eg putting types in app vs src)
+- create separate types files? 
+- var names in this project + link preview api 
