@@ -1,7 +1,7 @@
+## Now 
+- fallback 
+
 ## Today 
-- link preview components 
-    - full
-    - fallback 
 - collection form styling 
 - save collection 
 
@@ -24,6 +24,11 @@
 ## Friday 
 - deploy 
 
+## Test urls 
+https://www.youtube.com/watch?v=KBCA3UfbOzI 
+https://github.com/corsodr/link-preview-api 
+https://rauchg.com/ 
+
 ## Review 
 - use Google/Auth.js user id for user id in db?
 - synching Google data?
@@ -33,3 +38,4 @@
 - API code 
 - should I add link previews to db when user adds them or when they save a collection? 
 - should I use auth middleware? 
+- favicon fallback? 
