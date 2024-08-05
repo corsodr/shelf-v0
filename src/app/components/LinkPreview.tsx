@@ -1,5 +1,5 @@
 export default function LinkPreview({ preview }) {
-  const { title, url, image } = preview;
+  const { url, domain, title, image } = preview;
   console.log('preview', preview);
   return (
     <div className="flex mb-8">
@@ -8,13 +8,16 @@ export default function LinkPreview({ preview }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <div className="flex hover:bg-slate-100 rounded-lg">
+        <div className="flex w-[1000px] gap-5 hover:bg-slate-100 rounded-lg">
           <img 
             src={image} 
             alt={`Thumbnail for ${title}`} 
-            className="object-cover w-[192px] h=[108px] rounded-lg" 
+            className="object-cover w-[246px] h-[138px] rounded-lg" 
           />
-          <h3 className="text-lg font-bold">{title}</h3>
+          <div className="flex flex-col justify-center">
+            <h3 className="text-xl font-bold">{title}</h3>
+            <p className="text-slate-600">{domain}</p>
+          </div>
         </div>
       </a>
     </div>

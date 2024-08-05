@@ -30,7 +30,7 @@ export default function CollectionForm() {
   }
     
   return (
-    <div className="flex flex-col w-80 gap-4">
+    <div className="flex flex-col gap-4">
       <input 
         type="text" 
         placeholder="Title"

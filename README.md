@@ -1,16 +1,30 @@
-Small. Every day. 
+## Today 
+- link preview components 
+    - full
+    - fallback 
+- collection form styling 
+- save collection 
 
-## Next 
-- link preview
-- typescript code 
-- collection 
-- collection list 
-- update collection
+## Tuesday 
+- collection component 
+- collection list component 
+- update collection 
 - delete collection 
+
+## Wednesday 
+- typescript code
+- delete preview 
+- reorder previews 
+
+## Thursday 
 - user profile/settings 
+- styling 
+- review 
+
+## Friday 
+- deploy 
 
 ## Review 
-- nyt link previews 
 - use Google/Auth.js user id for user id in db?
 - synching Google data?
 - separate sign in and sign up?
@@ -19,6 +33,3 @@ Small. Every day.
 - API code 
 - should I add link previews to db when user adds them or when they save a collection? 
 - should I use auth middleware? 
-
-## References 
-- Arc browser library - try it 

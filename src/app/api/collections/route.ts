@@ -12,7 +12,6 @@ export async function GET() {
   const userId = session.user.id;
 
   try { 
-    // should I use order by?
     const collectionsResult = await sql`
       SELECT 
         collections.id,
@@ -72,7 +71,7 @@ export async function POST(req: Request) {
       FROM json_populate_recordset(null::link_previews, ${JSON.stringify(links)})
     `;
 
-     // use a bulk insert  
+     // bulk insert 
      for (const link of links) {
       await sql`
         INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
