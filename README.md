@@ -1,5 +1,5 @@
-## Now 
-- fallback 
+## Now
+ - collection form styling 
 
 ## Today 
 - collection form styling 
@@ -18,7 +18,7 @@
 
 ## Thursday 
 - user profile/settings 
-- styling 
+- mobile  
 - review 
 
 ## Friday 

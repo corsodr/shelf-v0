@@ -2,6 +2,10 @@
 import { use, useState } from "react";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 
+// save collection 
+// form size 
+// style title
+
 export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
@@ -30,7 +34,7 @@ export default function CollectionForm() {
   }
     
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <input 
         type="text" 
         placeholder="Title"
@@ -38,6 +42,7 @@ export default function CollectionForm() {
         onChange={(e) => setTitle(e.target.value)}
         className="border border-gray-400 p-2 rounded-lg"
       />
+      {previews && <LinkPreviewList previews={previews} />} 
       <div className="flex gap-4">
         <input 
           type="url" 
@@ -53,7 +58,6 @@ export default function CollectionForm() {
           Add
         </button>
       </div>
-      <LinkPreviewList previews={previews} /> 
     </div>
   );
 }

@@ -65,19 +65,19 @@ export async function POST(req: Request) {
 
     const collectionId = collectionResult.rows[0].id;
 
+    // review bulk insert 
     await sql`
       INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
       SELECT ${collectionId}, url, title, favicon, description, image
       FROM json_populate_recordset(null::link_previews, ${JSON.stringify(links)})
     `;
 
-     // bulk insert 
-     for (const link of links) {
-      await sql`
-        INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
-        VALUES (${collectionId}, ${link.url}, ${link.title}, ${link.favicon}, ${link.description}, ${link.image})
-      `;
-    }
+    //  for (const link of links) {
+    //   await sql`
+    //     INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
+    //     VALUES (${collectionId}, ${link.url}, ${link.title}, ${link.favicon}, ${link.description}, ${link.image})
+    //   `;
+    // }
 
     await sql`COMMIT`;
 
