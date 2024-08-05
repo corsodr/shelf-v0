@@ -10,7 +10,7 @@ export default function LinkPreview({ preview }) {
         rel="noopener noreferrer"
         className="w-full"
       >
-        <div className="flex w-[1000px] gap-5 hover:bg-slate-100 rounded-lg p-4">
+        <div className="flex w-[800px] gap-5 hover:bg-slate-100 rounded-lg p-4">
           {image && (
             <img 
               src={image} 
@@ -19,8 +19,8 @@ export default function LinkPreview({ preview }) {
             />
           )}
           <div className="flex flex-col justify-center">
-            <h3 className="text-lg font-bold">{title}</h3>
-            <p className="text-sm text-slate-600">{domain}</p>
+            <h3 className="text-lg font-bold mb-2">{title}</h3>
+            <p className="text text-slate-600">{domain}</p>
           </div>
         </div>
       </a>

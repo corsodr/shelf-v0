@@ -1,6 +1,5 @@
 ## Now
-- save collection 
-- collection form styling 
+- collection form styling - mvp 
 
 ## Today 
 - typescript code

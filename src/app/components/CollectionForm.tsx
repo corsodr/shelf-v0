@@ -1,5 +1,5 @@
 'use client'
-import { use, useState } from "react";
+import { useState } from "react";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 
 // form size 
@@ -64,15 +64,15 @@ export default function CollectionForm() {
     }
   };
   
-  // review this 
   return (
-    <form onSubmit={submitCollection} className="flex flex-col gap-2">
+    <form onSubmit={submitCollection} className="flex flex-col w-[800px] gap-2">
       <input 
         type="text" 
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="border border-gray-400 p-2 rounded-lg"
+        className="p-2 rounded-lg text-3xl font-bold focus:outline-none placeholder-gray-300"
+        autoFocus
         required
       />
       {previews && <LinkPreviewList previews={previews} />} 
@@ -96,7 +96,7 @@ export default function CollectionForm() {
         type="submit"
         className="bg-green-500 text-white px-4 py-2 rounded-lg mt-4"
       >
-        Submit Collection
+        Save
       </button>
     </form>
   );
