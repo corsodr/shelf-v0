@@ -1,10 +1,8 @@
-// backend vs frontend LinkPreview
-// var names - compare to LinkPreviewAPI 
 // customize session type? 
 // get feedback 
 // goal is rock solid data flow
 
-export interface Preview {
+export interface ApiPreview {
   url: string;
   domain: string;
   title: string;
@@ -13,7 +11,7 @@ export interface Preview {
   image: string;
 }
 
-export interface LinkPreview {
+export interface Preview {
     id: string;
     url: string;
     title: string;
@@ -26,5 +24,5 @@ export interface LinkPreview {
   export interface Collection {
     id: string;
     name: string;
-    link_previews: LinkPreview[];
+    link_previews: Preview[];
   }

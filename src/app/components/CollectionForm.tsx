@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
-import LinkPreviewList from '@/app/components/LinkPreviewList';
-import { Preview } from '@/app/types/types';
+import PreviewList from '@/app/components/PreviewList';
+import { ApiPreview } from '@/app/types/types';
 
 // fix collection title cut off 
 // add skeleton loader for previews 
@@ -9,7 +9,8 @@ import { Preview } from '@/app/types/types';
 export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  const [previews, setPreviews] = useState<Preview>([]); 
+  // fix this 
+  const [previews, setPreviews] = useState<ApiPreview>([]); 
 
 
   // should I type API response? 
@@ -76,7 +77,7 @@ export default function CollectionForm() {
         autoFocus
         required
       />
-      {previews && <LinkPreviewList previews={previews} />} 
+      {previews && <PreviewList previews={previews} />} 
       <div className="flex gap-3 mb-4">
         <input 
           type="url" 

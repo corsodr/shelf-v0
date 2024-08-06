@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
-import { Collection, LinkPreview } from '@/app/types/types';
+import { Collection, Preview } from '@/app/types/types';
 
 export async function GET() {
   const session = await auth();
@@ -46,7 +46,7 @@ export async function GET() {
 // use, rename, move to types.ts? 
 interface PostRequestBody {
   title: string;
-  links: Omit<LinkPreview, 'id' | 'created_at'>[];
+  links: Omit<Preview, 'id' | 'created_at'>[];
 }
 
 export async function POST(req: Request) {

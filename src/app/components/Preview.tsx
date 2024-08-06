@@ -1,4 +1,4 @@
-export default function LinkPreview({ preview }) {
+export default function Preview({ preview }) {
   const { url, domain, title, image } = preview;
   console.log('preview', preview);
 
