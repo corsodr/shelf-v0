@@ -1,17 +1,18 @@
-Building. 
+Don't think hard. 
 
-- youtube titles
-- https://github.com/corsodr - title + image 
-
-## Tuesday 
+## Now
 - simple typing 
+
+## Today 
 - code comments 
 - collection component 
 - collection list component 
-- edit collection - add, delete, reorder 
 - delete collection 
+- edit collection - add, delete, reorder 
 
 ## Wednesday 
+- fix youtube titles 
+- fix https://github.com/corsodr title + image
 - user profile/settings 
 - styling - find good old version 
 
@@ -45,3 +46,5 @@ https://rudra.dev/posts/generate-beautiful-json-from-postgresql/
 - file structure (eg putting types in app vs src)
 - create separate types files? 
 - var names in this project + link preview api 
+- check lighthouse and security in dev tools 
+- should I type session? 

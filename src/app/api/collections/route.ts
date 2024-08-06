@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
+import { Collection, LinkPreview } from '@/app/types/types';
 
 export async function GET() {
   const session = await auth();
@@ -11,8 +12,9 @@ export async function GET() {
   
   const userId = session.user.id;
 
+  // remove created_at? 
   try { 
-    const collectionsResult = await sql`
+    const collectionsResult = await sql<Collection>`
       SELECT 
         collections.id,
         collections.name,
@@ -41,6 +43,12 @@ export async function GET() {
   }
 }
 
+// use, rename, move to types.ts? 
+interface PostRequestBody {
+  title: string;
+  links: Omit<LinkPreview, 'id' | 'created_at'>[];
+}
+
 export async function POST(req: Request) {
   const session = await auth();
 
@@ -49,8 +57,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    // should I type here or in request param? 
-    const { title, links } = await req.json();
+    const { title, links }: PostRequestBody = await req.json();
 
     if (!title || !links || !Array.isArray(links)) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
@@ -58,7 +65,7 @@ export async function POST(req: Request) {
 
     await sql`BEGIN`;
 
-    const collectionResult = await sql`
+    const collectionResult = await sql<{ id: string }>`
       INSERT INTO collections (user_id, name)
       VALUES (${session.user.id}, ${title})
       RETURNING id

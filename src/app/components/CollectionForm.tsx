@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
+import { Preview } from '@/app/types/types';
 
 // fix collection title cut off 
 // add skeleton loader for previews 
@@ -8,8 +9,10 @@ import LinkPreviewList from '@/app/components/LinkPreviewList';
 export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  const [previews, setPreviews] = useState([]); 
+  const [previews, setPreviews] = useState<Preview>([]); 
 
+
+  // should I type API response? 
   const fetchPreview = async () => {
     try {
       const response = await fetch('https://link-preview-api-v1.vercel.app/api/preview', {
