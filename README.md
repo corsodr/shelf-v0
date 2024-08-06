@@ -4,6 +4,8 @@ Don't think hard.
 - simple typing 
 
 ## Today 
+- type CollectionForm, Preview, PreviewList
+- change link_previews to previews?
 - code comments 
 - collection component 
 - collection list component 

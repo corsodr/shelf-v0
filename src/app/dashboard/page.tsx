@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { SignOut } from "@/app/components/SignOut";
-import CollectionForm from "@/app/components/CollectionForm";
+import Editor from "@/app/components/Editor";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -21,7 +21,7 @@ export default async function DashboardPage() {
 
       <main className="flex-grow container mx-auto px-4 py-4">
         <section className="my-8">
-          <CollectionForm /> 
+          <Editor /> 
         </section>
       </main>
 

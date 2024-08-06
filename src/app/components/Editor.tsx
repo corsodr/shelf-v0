@@ -6,14 +6,11 @@ import { ApiPreview } from '@/app/types/types';
 // fix collection title cut off 
 // add skeleton loader for previews 
 // add dev + user error handling 
-export default function CollectionForm() {
+export default function Editor() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  // fix this 
-  const [previews, setPreviews] = useState<ApiPreview>([]); 
+  const [previews, setPreviews] = useState<ApiPreview[]>([]); 
 
-
-  // should I type API response? 
   const fetchPreview = async () => {
     try {
       const response = await fetch('https://link-preview-api-v1.vercel.app/api/preview', {
@@ -29,7 +26,6 @@ export default function CollectionForm() {
       }
 
       const data = await response.json();
-      // fix this
       setPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
@@ -46,7 +42,6 @@ export default function CollectionForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        // links, previews, link_previews? compare to API and db 
         body: JSON.stringify({
           title,
           previews
