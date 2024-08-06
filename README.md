@@ -1,11 +1,11 @@
 Building. 
 
-## Now 
-- improve fallback styling - same height + reference FB
-- remove margin above link input?
+- youtube titles
+- https://github.com/corsodr - title + image 
 
 ## Tuesday 
-- review + finish typing - keep it light - compare to db + link preview API - draw mental model if needed 
+- simple typing 
+- code comments 
 - collection component 
 - collection list component 
 - edit collection - add, delete, reorder 
@@ -30,6 +30,7 @@ Building.
 https://www.youtube.com/watch?v=KBCA3UfbOzI 
 https://github.com/corsodr/link-preview-api 
 https://rauchg.com/ 
+https://rudra.dev/posts/generate-beautiful-json-from-postgresql/
 
 ## Review 
 - use Google/Auth.js user id for user id in db?

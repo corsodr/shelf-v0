@@ -10,18 +10,18 @@ export default function LinkPreview({ preview }) {
         rel="noopener noreferrer"
         className="w-full"
       >
-        <div className="flex w-[800px] gap-5 hover:bg-slate-100 rounded-lg">
-          {image && (
+        <div className="flex w-[800px] h-[117px] gap-5 hover:bg-slate-100 rounded-lg">
+          {image && 
             <img 
               src={image} 
               alt={`Thumbnail for ${title}`} 
-              className="object-cover w-[208px] h-[117px] rounded-lg" 
+              className="object-cover w-[208px] rounded-lg" 
             />
-          )}
-          <div className="flex flex-col justify-center">
-            <h3 className="text-lg font-bold mb-2">{title}</h3>
-            <p className="text text-slate-600">{domain}</p>
-          </div>
+            }
+            <div className="flex flex-col justify-center">
+              <h3 className="text-lg font-bold mb-2">{title}</h3>
+              <p className="text text-slate-600">{domain}</p>
+            </div>
         </div>
       </a>
     </div>

@@ -2,9 +2,9 @@
 import { useState } from "react";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 
-// spacing 
-// loading state 
-// error handling 
+// fix collection title cut off 
+// add skeleton loader for previews 
+// add dev + user error handling 
 export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
@@ -63,18 +63,18 @@ export default function CollectionForm() {
   };
   
   return (
-    <form onSubmit={submitCollection} className="flex flex-col w-[600px] gap-4">
+    <form onSubmit={submitCollection} className="flex flex-col w-[600px]">
       <input 
         type="text" 
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="text-4xl font-bold focus:outline-none placeholder-gray-300"
+        className="text-4xl font-bold focus:outline-none placeholder-gray-300 mb-4"
         autoFocus
         required
       />
       {previews && <LinkPreviewList previews={previews} />} 
-      <div className="flex gap-3">
+      <div className="flex gap-3 mb-4">
         <input 
           type="url" 
           placeholder="Link"
