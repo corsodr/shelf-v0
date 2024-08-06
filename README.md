@@ -1,8 +1,8 @@
 Building. 
 
 ## Now 
-- improve styling 
-- reference youtube playlist 
+- improve fallback styling - same height + reference FB
+- remove margin above link input?
 
 ## Tuesday 
 - review + finish typing - keep it light - compare to db + link preview API - draw mental model if needed 

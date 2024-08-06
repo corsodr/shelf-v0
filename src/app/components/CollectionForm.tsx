@@ -63,7 +63,7 @@ export default function CollectionForm() {
   };
   
   return (
-    <form onSubmit={submitCollection} className="flex flex-col w-[600px] gap-3">
+    <form onSubmit={submitCollection} className="flex flex-col w-[600px] gap-4">
       <input 
         type="text" 
         placeholder="Title"
@@ -74,7 +74,7 @@ export default function CollectionForm() {
         required
       />
       {previews && <LinkPreviewList previews={previews} />} 
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <input 
           type="url" 
           placeholder="Link"
@@ -92,7 +92,7 @@ export default function CollectionForm() {
       </div>
       <button 
         type="submit"
-        className="bg-blue-500 text-white px-5 py-3 rounded-lg mt-4 self-start"
+        className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
       >
         Save
       </button>
