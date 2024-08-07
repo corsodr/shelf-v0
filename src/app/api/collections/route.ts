@@ -12,7 +12,6 @@ export async function GET() {
   
   const userId = session.user.id;
 
-  // remove created_at? 
   try { 
     const collectionsResult = await sql<Collection>`
       SELECT 

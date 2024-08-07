@@ -3,9 +3,6 @@ import { useState } from "react";
 import PreviewList from '@/app/components/PreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-// fix collection title cut off 
-// add skeleton loader for previews 
-// add dev + user error handling 
 export default function Editor() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
@@ -25,7 +22,7 @@ export default function Editor() {
         throw new Error(`HTTP error. Status: ${response.status}`);
       }
 
-      const data = await response.json();
+      const data: ApiPreview = await response.json();
       setPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
@@ -33,7 +30,7 @@ export default function Editor() {
     }
   }
 
-  const submitCollection = async (e) => {
+  const submitCollection = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {
