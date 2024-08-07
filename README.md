@@ -5,6 +5,7 @@ Embrace feedback. Make time to talk to people.
 ## Today
 - collection component 
 - collection list component 
+- can I make any of the components server components? 
 
 ## Week 
 - make var names descriptive 
