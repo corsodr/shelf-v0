@@ -1,7 +1,8 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { SignOut } from "@/app/components/SignOut";
-import Editor from "@/app/components/Editor";
+import CollectionList from "@/app/components/CollectionList";
+import CollectionManager from "@/app/components/CollectionManager";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -11,6 +12,7 @@ export default async function DashboardPage() {
   }
 
   return (
+    // move this to layout 
     <div className="flex flex-col min-h-screen">
       <header className="container mx-auto px-4 py-4 flex items-center justify-between">
         <h3 className="text-xl font-bold">Shelf</h3>
@@ -21,7 +23,8 @@ export default async function DashboardPage() {
 
       <main className="flex-grow container mx-auto px-4 py-4">
         <section className="my-8">
-          <Editor /> 
+          <CollectionList />
+          <CollectionManager />
         </section>
       </main>
 

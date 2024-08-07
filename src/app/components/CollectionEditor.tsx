@@ -3,7 +3,7 @@ import { useState } from "react";
 import PreviewList from '@/app/components/PreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-export default function Editor() {
+export default function CollectionEditor() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [previews, setPreviews] = useState<ApiPreview[]>([]); 
