@@ -1,30 +1,23 @@
-'use client'
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getCollections } from '@/lib/collections';
 
-export default function CollectionList({ onSelectCollection }) {
-  const [collections, setCollections] = useState([]);
-
-  useEffect(() => {
-    // Fetch collections from your API
-    // Update the collections state
-  }, []);
+export default async function CollectionList() {
+  const collections = await getCollections();
 
   return (
     <nav className="w-64 mr-8">
       <ul>
         {collections.map(collection => (
           <li key={collection.id}>
-            <button 
-              onClick={() => onSelectCollection(collection.id)}
-              className="text-blue-500 hover:underline"
-            >
+            <Link href={`/dashboard/collections/${collection.id}`} className="text-blue-500 hover:underline">
               {collection.name}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
+      <Link href="/dashboard/collections/new" className="text-blue-500 hover:underline">
+        Create New Collection
+      </Link>
     </nav>
   );
 }

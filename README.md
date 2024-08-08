@@ -1,26 +1,28 @@
-Solid code. I'm learning. 
+This is a good idea. 
+Iterate. Get help. Make it happen.
 
-Embrace feedback. Make time to talk to people. 
+## Now 
+- restructure frontend
 
-## Today
-- collection component 
-- collection list component 
-- can I make any of the components server components? 
+## Today 
+- implement frontened
+- header + footer components 
 
-## Week 
-- make var names descriptive 
-- delete collection 
-- edit collection - add, delete, reorder 
-- type code so far
-- change link_previews to preveiws? 
-
-- user profile/settings 
-- desktop styling 
-- mobile styling 
-- review 
+## Week  
+- type code so far 
+- add user profile/settings 
+- improve styling 
+- review code 
 - deploy 
 - test
-- feedback
+
+## Next week 
+- get code feedback 
+- get product feedback 
+- improve API 
+
+## Next week 
+- social 
 
 ## Test urls 
 https://www.youtube.com/watch?v=KBCA3UfbOzI 
@@ -29,6 +31,7 @@ https://rauchg.com/
 https://rudra.dev/posts/generate-beautiful-json-from-postgresql/
 
 ## Review 
+- library/profile - need good references 
 - use Google/Auth.js user id for user id in db?
 - separate sign in and sign up?
 - should I use auth middleware? 
