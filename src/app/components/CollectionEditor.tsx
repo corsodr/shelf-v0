@@ -67,6 +67,7 @@ export default function CollectionEditor() {
       }
       
       const result = await response.json();
+      console.log('result:', result);
       router.push(`/collections/${result.id}`);
       router.refresh(); // This will refresh the CollectionList
     } catch (error) {

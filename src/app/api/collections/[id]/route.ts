@@ -1,9 +1,31 @@
-// check params usage 
+import { NextResponse } from 'next/server';
+import { getCollection } from '@/app/lib/collections';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-    // Logic to get a specific collection
+// review API routes vs lib functions 
+
+// do I need this? 
+export async function GET(
+  request: Request, 
+  { params }: { params: { id: string } }
+) {
+  try {
+    const collection = await getCollection(params.id);
+    
+    if (!collection) {
+      return NextResponse.json({ error: "Collection not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(collection, { status: 200 });
+  } catch (error) {
+    if (error.message === "Unauthorized") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    console.error('Error fetching collection:', error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
 }
-  
+
+
 export async function PUT(request: Request, { params }: { params: { id: string } }) {
   // Logic to update a specific collection
 }

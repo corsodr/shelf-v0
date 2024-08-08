@@ -2,13 +2,14 @@ This is a good idea.
 Iterate. Get help. Make it happen.
 
 ## Now 
-- implement frontened
+- implement frontened!!!!
 
 ## Week  
-- thorough code review
-- add cascade delete to users + collections
 - header + footer components 
+- server side + routing mental model
+- thorough code review
 - type code so far 
+- add cascade delete to users + collection
 - add user profile/settings 
 - improve styling 
 - review questions  
@@ -30,6 +31,7 @@ https://rauchg.com/
 https://rudra.dev/posts/generate-beautiful-json-from-postgresql/
 
 ## Review 
+- shareable collection url
 - library/profile - need good references 
 - use Google/Auth.js user id for user id in db?
 - separate sign in and sign up?

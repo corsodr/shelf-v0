@@ -60,7 +60,7 @@ export async function POST(req: Request) {
 
     await sql`COMMIT`;
 
-    return NextResponse.json({ message: "Collection created successfully", collectionId }, { status: 201 });
+    return NextResponse.json({ id: collectionId, message: "Collection created successfully" }, { status: 201 });
 
   } catch (error) {
     await sql`ROLLBACK`;

@@ -9,13 +9,13 @@ export default async function CollectionList() {
       <ul>
         {collections.map(collection => (
           <li key={collection.id}>
-            <Link href={`/dashboard/collections/${collection.id}`} className="text-blue-500 hover:underline">
+            <Link href={`/collections/${collection.id}`} className="text-blue-500 hover:underline">
               {collection.name}
             </Link>
           </li>
         ))}
       </ul>
-      <Link href="/dashboard/collections/new" className="text-blue-500 hover:underline">
+      <Link href="/collections/new" className="text-blue-500 hover:underline">
         Create New Collection
       </Link>
     </nav>
