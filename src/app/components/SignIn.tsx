@@ -6,7 +6,7 @@ export function SignIn() {
     <form
       action={async () => {
         "use server";
-        await signIn("google", { redirectTo: "/dashboard" })
+        await signIn("google", { redirectTo: "/collections" })
       }}
     >
       {/* improve button styling - look at Claude homepage  */}

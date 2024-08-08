@@ -1,6 +1,5 @@
-export default function LinkPreview({ preview }) {
-  const { url, domain, title, image } = preview;
-  console.log('preview', preview);
+export default function LinkPreview({ linkPreview }) {
+  const { url, domain, title, image } = linkPreview;
 
   return (
     <div className="flex mb-4">

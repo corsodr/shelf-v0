@@ -2,41 +2,19 @@ import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
 import { Collection, Preview } from '@/app/types/types';
+import { getCollections } from '@/app/lib/collections';
 
+// update typing 
+
+// do I need this? 
 export async function GET() {
-  const session = await auth();
-
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  
-  const userId = session.user.id;
-
-  try { 
-    const collectionsResult = await sql<Collection>`
-      SELECT 
-        collections.id,
-        collections.name,
-        json_agg(json_build_object(
-          'id', link_previews.id,
-          'url', link_previews.url,
-          'title', link_previews.title,
-          'favicon', link_previews.favicon,
-          'description', link_previews.description,
-          'image', link_previews.image,
-          'created_at', link_previews.created_at
-        )) AS link_previews
-      FROM 
-        collections
-        LEFT JOIN link_previews ON collections.id = link_previews.collection_id
-      WHERE 
-        collections.user_id = ${userId}
-      GROUP BY 
-        collections.id, collections.name
-    `;
-
-    return NextResponse.json({ collections: collectionsResult.rows }, { status: 200 }); 
+  try {
+    const collections = await getCollections();
+    return NextResponse.json({ collections }, { status: 200 });
   } catch (error) {
+    if (error.message === "Unauthorized") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     console.error('Error fetching collections:', error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }

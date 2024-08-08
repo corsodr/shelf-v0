@@ -1,13 +1,13 @@
-import Preview from '@/app/components/Preview';
+import LinkPreview from '@/app/components/LinkPreview';
 
 // review using preview.url for key 
-export default function LinkPreviewList({ previews }) {
+export default function LinkPreviewList({ linkPreviews }) {
   return (
     <div>
-      {previews.map((preview) => (
-        <Preview 
-            key={preview.url}
-            preview={preview}
+      {linkPreviews.map((linkPreview) => (
+        <LinkPreview 
+            key={linkPreview.url}
+            linkPreview={linkPreview}
         />
       ))}
     </div>

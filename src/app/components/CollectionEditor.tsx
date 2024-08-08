@@ -1,14 +1,23 @@
 'use client'
 import { useState } from "react";
-import PreviewList from '@/app/components/PreviewList';
+import { useRouter } from "next/navigation";
+import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
+// review new code 
 export default function CollectionEditor() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  const [previews, setPreviews] = useState<ApiPreview[]>([]); 
+  const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>([]); 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  const router = useRouter();
 
   const fetchPreview = async () => {
+    if (!link) return;
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch('https://link-preview-api-v1.vercel.app/api/preview', {
         method: 'POST',
@@ -19,20 +28,28 @@ export default function CollectionEditor() {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error. Status: ${response.status}`);
+        throw new Error(`Failed to fetch preview. Status: ${response.status}`);
       }
 
       const data: ApiPreview = await response.json();
-      setPreviews((prevPreviews) => [...prevPreviews, data]);
+      setLinkPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
+      setError('Failed to fetch link preview. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   }
 
   const submitCollection = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    if (linkPreviews.length === 0) {
+      setError('Please add at least one link to your collection.');
+      return;
+    }
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch('/api/collections', {
         method: 'POST',
@@ -41,20 +58,22 @@ export default function CollectionEditor() {
         },
         body: JSON.stringify({
           title,
-          previews
+          linkPreviews
         })
       });
   
       if (!response.ok) {
-        throw new Error(`HTTP error. Status: ${response.status}`);
+        throw new Error(`Failed to create collection. Status: ${response.status}`);
       }
       
-      // keep this? 
       const result = await response.json();
-      setTitle('');
-      setPreviews([]);
+      router.push(`/collections/${result.id}`);
+      router.refresh(); // This will refresh the CollectionList
     } catch (error) {
       console.error('Error submitting collection:', error);
+      setError('Failed to create collection. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -69,7 +88,7 @@ export default function CollectionEditor() {
         autoFocus
         required
       />
-      {previews && <PreviewList previews={previews} />} 
+      {linkPreviews.length > 0 && <LinkPreviewList linkPreviews={linkPreviews} />} 
       <div className="flex gap-3 mb-4">
         <input 
           type="url" 
@@ -82,15 +101,18 @@ export default function CollectionEditor() {
           type="button"
           className="bg-blue-500 text-white px-5 py-3 rounded-lg"
           onClick={fetchPreview}
+          disabled={isLoading || !link}
         >
-          Add
+          {isLoading ? 'Adding...' : 'Add'}
         </button>
       </div>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <button 
         type="submit"
         className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
+        disabled={isLoading || linkPreviews.length === 0}
       >
-        Save
+        {isLoading ? 'Saving...' : 'Save'}
       </button>
     </form>
   );

@@ -2,13 +2,11 @@ This is a good idea.
 Iterate. Get help. Make it happen.
 
 ## Now 
-- restructure frontend
-
-## Today 
-- implement frontened
-- header + footer components 
+- implement frontened!!!!
 
 ## Week  
+- add cascade delete to users + collections
+- header + footer components 
 - type code so far 
 - add user profile/settings 
 - improve styling 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getCollections } from '@/lib/collections';
+import { getCollections } from '@/app/lib/collections';
 
 export default async function CollectionList() {
   const collections = await getCollections();
