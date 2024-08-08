@@ -1,17 +1,18 @@
+import { redirect } from 'next/navigation';
 import { getCollections } from '@/app/lib/collections';
-import CollectionEditor from '@/app/components/CollectionEditor';
-import CollectionView from '@/app/components/CollectionView';
+import { auth } from "@/auth";
 
 export default async function CollectionsPage() {
+  const session = await auth();
+  if (!session?.user) {
+    redirect('/login');
+  }
+
   const collections = await getCollections();
 
-  return (
-    <div>
-      {collections.length === 0 ? (
-        <CollectionEditor />
-      ) : (
-        <CollectionView collectionId={collections[0].id} />
-      )}
-    </div>
-  );
+  if (collections.length === 0) {
+    redirect('/collections/new');
+  } else {
+    redirect(`/collections/${collections[0].id}`);
+  }
 }

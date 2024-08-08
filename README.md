@@ -1,13 +1,15 @@
-This is a good idea. 
-Iterate. Get help. Make it happen.
+I beleive in this!!!
 
 ## Now 
-- implement frontened!!!!
+- review code 
 
-## Week  
-- header + footer components 
-- server side + routing mental model
-- thorough code review
+## Today 
+- header component 
+- footer component 
+- collection list 
+- collection view 
+
+## Friday 
 - type code so far 
 - add cascade delete to users + collection
 - add user profile/settings 
@@ -17,8 +19,8 @@ Iterate. Get help. Make it happen.
 - test
 
 ## Next week 
-- get code feedback 
-- get product feedback 
+- code feedback 
+- product feedback 
 - improve API 
 
 ## Next week 
@@ -31,6 +33,7 @@ https://rauchg.com/
 https://rudra.dev/posts/generate-beautiful-json-from-postgresql/
 
 ## Review 
+- code mental model 
 - shareable collection url
 - library/profile - need good references 
 - use Google/Auth.js user id for user id in db?
