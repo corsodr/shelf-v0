@@ -11,7 +11,7 @@ export async function getCollections() {
   const userId = session.user.id;
 
   try { 
-    const collectionsResult = await sql<Collection>`
+    const collectionsResult = await sql`
       SELECT 
         collections.id,
         collections.name,

@@ -20,12 +20,6 @@ export async function GET() {
   }
 }
 
-// use, rename, move to types.ts? 
-interface PostRequestBody {
-  title: string;
-  links: Omit<Preview, 'id' | 'created_at'>[];
-}
-
 export async function POST(req: Request) {
   const session = await auth();
 
@@ -34,9 +28,9 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { title, links }: PostRequestBody = await req.json();
+    const { title, linkPreviews } = await req.json();
 
-    if (!title || !links || !Array.isArray(links)) {
+    if (!title || !linkPreviews || !Array.isArray(linkPreviews)) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
@@ -54,7 +48,7 @@ export async function POST(req: Request) {
     await sql`
       INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
       SELECT ${collectionId}, url, title, favicon, description, image
-      FROM json_populate_recordset(null::link_previews, ${JSON.stringify(links)})
+      FROM json_populate_recordset(null::link_previews, ${JSON.stringify(linkPreviews)})
     `;
 
     //  for (const link of links) {

@@ -2,15 +2,16 @@ This is a good idea.
 Iterate. Get help. Make it happen.
 
 ## Now 
-- implement frontened!!!!
+- implement frontened
 
 ## Week  
+- thorough code review
 - add cascade delete to users + collections
 - header + footer components 
 - type code so far 
 - add user profile/settings 
 - improve styling 
-- review code 
+- review questions  
 - deploy 
 - test
 
