@@ -4,20 +4,21 @@ import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-// review new code 
+// improve loading UI 
 export default function CollectionEditor() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>([]); 
   const [isLoading, setIsLoading] = useState(false);
+  // review typing + setting error to null + error handling 
   const [error, setError] = useState<string | null>(null);
   
   const router = useRouter();
 
   const fetchPreview = async () => {
-    if (!link) return;
     setIsLoading(true);
     setError(null);
+
     try {
       const response = await fetch('https://link-preview-api-v1.vercel.app/api/preview', {
         method: 'POST',
@@ -50,6 +51,7 @@ export default function CollectionEditor() {
     }
     setIsLoading(true);
     setError(null);
+
     try {
       const response = await fetch('/api/collections', {
         method: 'POST',
@@ -67,9 +69,9 @@ export default function CollectionEditor() {
       }
       
       const result = await response.json();
-      console.log('result:', result);
+      // review this - how does colletion list update? 
       router.push(`/collections/${result.id}`);
-      router.refresh(); // This will refresh the CollectionList
+      router.refresh(); 
     } catch (error) {
       console.error('Error submitting collection:', error);
       setError('Failed to create collection. Please try again.');

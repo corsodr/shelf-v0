@@ -2,8 +2,6 @@ import { auth } from "@/auth";
 import { redirect } from 'next/navigation';
 import CollectionView from '@/app/components/CollectionView';
 
-// does it make sense to have this page and the CollectionView component? 
-
 export default async function CollectionPage({ params }: { params: { id: string } }) {
   const session = await auth();
   if (!session?.user) {

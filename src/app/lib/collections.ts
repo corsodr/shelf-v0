@@ -34,10 +34,6 @@ export async function getCollection(collectionId: string) {
         collections.id, collections.name
     `;
 
-    if (result.rows.length === 0) {
-      return null;
-    }
-
     return result.rows[0];
   } catch (error) {
     console.error('Error fetching collection:', error);

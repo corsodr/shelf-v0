@@ -1,5 +1,7 @@
 import CollectionList from "@/app/components/CollectionList";
 
+// add header and footer here
+// should I call CollectionList Sidebar?
 export default function CollectionsLayout({
   children,
 }: {

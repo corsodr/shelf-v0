@@ -1,6 +1,6 @@
 import { signIn } from "@/auth";
 
-// review how server actions works 
+// review how server actions works and why use them here
 export function SignIn() {
   return (
     <form

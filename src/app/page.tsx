@@ -2,8 +2,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { SignIn } from "@/app/components/SignIn";
 
-// use layout? 
-// call this home or something else? 
+// use layout
 export default async function Home() {
   const session = await auth();
 
@@ -11,7 +10,6 @@ export default async function Home() {
     redirect("/collections");
   }
 
-  // review styles 
   return (
     <div className="flex flex-col min-h-screen">
 
@@ -27,7 +25,6 @@ export default async function Home() {
         <SignIn />
       </main>
 
-      {/* should footer always be visible? */}
       <footer className="bg-gray-100">
         <div className="container mx-auto px-4 py-4 text-center text-sm text-gray-600">
           &copy; 2024 Shelf. All rights reserved.

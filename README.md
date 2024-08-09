@@ -1,15 +1,14 @@
-I beleive in this!!!
+Make it happen. Pace. 
 
-## Now 
-- review code 
+- frontend code review 
+- backend code review 
 
-## Today 
 - header component 
 - footer component 
-- collection list 
-- collection view 
+- collection styling 
 
-## Friday 
+- delete collection 
+- edit collection 
 - type code so far 
 - add cascade delete to users + collection
 - add user profile/settings 
@@ -18,12 +17,10 @@ I beleive in this!!!
 - deploy 
 - test
 
-## Next week 
 - code feedback 
 - product feedback 
 - improve API 
-
-## Next week 
+- library 
 - social 
 
 ## Test urls 
@@ -33,13 +30,16 @@ https://rauchg.com/
 https://rudra.dev/posts/generate-beautiful-json-from-postgresql/
 
 ## Review 
+- Next.js tutorial 
+- comments 
+- routing 
+- state vs current approach - server side rendering, fetching data, caching, etc
 - code mental model 
 - shareable collection url
 - library/profile - need good references 
 - use Google/Auth.js user id for user id in db?
 - separate sign in and sign up?
 - should I use auth middleware? 
-- code comments 
 - type strategy 
 - security
 - performance 
