@@ -2,7 +2,6 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { SignIn } from "@/app/components/SignIn";
 
-// use layout
 export default async function Home() {
   const session = await auth();
 
@@ -18,7 +17,6 @@ export default async function Home() {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8 flex flex-col items-center justify-center">
-        {/* change anything to carousel */}
         <h1 className="text-4xl font-bold mb-8 text-center">
           Collect anything with Shelf
         </h1>

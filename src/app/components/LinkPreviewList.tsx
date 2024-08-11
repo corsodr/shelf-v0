@@ -1,6 +1,6 @@
 import LinkPreview from '@/app/components/LinkPreview';
 
-// review using preview.url for key 
+// check preview.url for key 
 export default function LinkPreviewList({ linkPreviews }) {
   return (
     <div>
