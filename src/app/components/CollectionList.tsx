@@ -15,10 +15,6 @@ export default async function CollectionList() {
           </li>
         ))}
       </ul>
-      {/* turn this into a button and move to header */}
-      <Link href="/collections/new" className="text-blue-500 hover:underline">
-        Create New Collection
-      </Link>
     </nav>
   );
 }
