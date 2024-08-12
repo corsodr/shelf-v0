@@ -4,19 +4,16 @@ import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-// improve loading UI 
 export default function CollectionEditor() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>([]); 
-  const [isLoading, setIsLoading] = useState(false);
   // review typing + setting error to null + error handling 
   const [error, setError] = useState<string | null>(null);
   
   const router = useRouter();
 
   const fetchPreview = async () => {
-    setIsLoading(true);
     setError(null);
 
     try {
@@ -38,8 +35,6 @@ export default function CollectionEditor() {
     } catch (error) {
       console.error('Error fetching preview', error);
       setError('Failed to fetch link preview. Please try again.');
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -49,7 +44,6 @@ export default function CollectionEditor() {
       setError('Please add at least one link to your collection.');
       return;
     }
-    setIsLoading(true);
     setError(null);
 
     try {
@@ -75,8 +69,6 @@ export default function CollectionEditor() {
     } catch (error) {
       console.error('Error submitting collection:', error);
       setError('Failed to create collection. Please try again.');
-    } finally {
-      setIsLoading(false);
     }
   };
   
@@ -104,18 +96,16 @@ export default function CollectionEditor() {
           type="button"
           className="bg-blue-500 text-white px-5 py-3 rounded-lg"
           onClick={fetchPreview}
-          disabled={isLoading || !link}
         >
-          {isLoading ? 'Adding...' : 'Add'}
+          Add
         </button>
       </div>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <button 
         type="submit"
         className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
-        disabled={isLoading || linkPreviews.length === 0}
       >
-        {isLoading ? 'Saving...' : 'Save'}
+        Save
       </button>
     </form>
   );

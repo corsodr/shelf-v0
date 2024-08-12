@@ -8,7 +8,7 @@ export default async function CollectionView({ collectionId }: { collectionId: s
     const { name, link_previews } = collection;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div>
       <h1 className="text-3xl font-bold mb-6">{name}</h1>
       {link_previews && link_previews.length > 0 ? (
         <LinkPreviewList linkPreviews={link_previews} />
