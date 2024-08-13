@@ -13,6 +13,12 @@ export default function CollectionForm() {
   
   const router = useRouter();
 
+  // clear form? 
+  const handleCancel = () => {
+    router.push('/collections');
+  };
+  
+
   const fetchPreview = async () => {
     setError(null);
 
@@ -34,7 +40,7 @@ export default function CollectionForm() {
       setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
-      setError('Failed to fetch link preview. Please try again.');
+      setError('Unable to create link preview. Please try again.');
     }
   }
 
@@ -74,7 +80,7 @@ export default function CollectionForm() {
   };
   
   return (
-    <form onSubmit={submitCollection} className="flex flex-col w-[600px]">
+    <form onSubmit={submitCollection} className="flex flex-col w-[500px]">
       <input 
         type="text" 
         placeholder="Title"
@@ -85,6 +91,7 @@ export default function CollectionForm() {
         required
       />
       {linkPreviews.length > 0 && <LinkPreviewList linkPreviews={linkPreviews} />} 
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="flex gap-3 mb-4">
         <input 
           type="url" 
@@ -101,13 +108,20 @@ export default function CollectionForm() {
           Add
         </button>
       </div>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <button 
-        type="submit"
-        className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
-      >
-        Save
-      </button>
+      <div className="flex gap-5">
+        <button 
+          type="submit"
+          className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
+        >
+          Save
+        </button>
+        <button
+            className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
+            onClick={handleCancel}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }
