@@ -4,7 +4,6 @@ import { sql } from '@vercel/postgres';
 import { Collection, Preview } from '@/app/types/types';
 import { getCollections } from '@/app/lib/collections';
 
-// do I need this? 
 export async function GET() {
   try {
     const collections = await getCollections();

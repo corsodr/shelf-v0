@@ -15,6 +15,7 @@ export default async function CollectionsPage() {
       <h1 className='text-xl font-bold'>Create your first collection.</h1>
     )
   } else {
+    // review this path 
     redirect(`/collections/${collections[0].id}`);
   }
 }

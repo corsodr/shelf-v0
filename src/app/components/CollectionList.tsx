@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getCollections } from '@/app/lib/collections';
 
+// how does this update
 export default async function CollectionList() {
   const collections = await getCollections();
 
