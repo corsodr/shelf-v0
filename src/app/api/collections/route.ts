@@ -4,8 +4,6 @@ import { sql } from '@vercel/postgres';
 import { Collection, Preview } from '@/app/types/types';
 import { getCollections } from '@/app/lib/collections';
 
-// update typing 
-
 // do I need this? 
 export async function GET() {
   try {
@@ -46,8 +44,8 @@ export async function POST(req: Request) {
 
     // review bulk insert 
     await sql`
-      INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
-      SELECT ${collectionId}, url, title, favicon, description, image
+      INSERT INTO link_previews (collection_id, url, title, domain, favicon, description, image)
+      SELECT ${collectionId}, url, title, domain, favicon, description, image
       FROM json_populate_recordset(null::link_previews, ${JSON.stringify(linkPreviews)})
     `;
 

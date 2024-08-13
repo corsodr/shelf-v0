@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-export default function CollectionEditor() {
+export default function CollectionForm() {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>([]); 
@@ -47,6 +47,7 @@ export default function CollectionEditor() {
     setError(null);
 
     try {
+      console.log('linkPreviews', linkPreviews);
       const response = await fetch('/api/collections', {
         method: 'POST',
         headers: {

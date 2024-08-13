@@ -1,7 +1,7 @@
-import CollectionEditor from '@/app/components/CollectionEditor';
+import CollectionForm from '@/app/components/CollectionForm';
 
 export default function NewCollectionPage() {
   return (
-    <CollectionEditor />
+    <CollectionForm />
   );
 }
