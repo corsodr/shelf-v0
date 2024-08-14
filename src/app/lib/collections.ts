@@ -42,6 +42,7 @@ export async function getCollection(collectionId: string) {
   }
 }
 
+// check syntax 
 export async function getCollections() {
   const session = await auth();
 
@@ -75,6 +76,7 @@ export async function getCollections() {
         collections.id, collections.name
     `;
 
+    console.log('Fetched collections:', collectionsResult.rows);
     return collectionsResult.rows;
   } catch (error) {
     console.error('Error fetching collections:', error);

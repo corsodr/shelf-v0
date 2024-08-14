@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { sql } from '@vercel/postgres';
 import { auth } from '@/auth';
-import { revalidatePath } from 'next/cache';
 import { getCollection } from '@/app/lib/collections';
 
 // review API routes vs lib functions 
@@ -62,7 +61,6 @@ export async function DELETE(
     `;
 
     if (result.rowCount > 0) {
-      revalidatePath('/collections');
       return NextResponse.json({ message: 'Collection deleted successfully' }, { status: 200 });
     } else {
       return NextResponse.json({ error: 'Collection not found or unauthorized' }, { status: 404 });
