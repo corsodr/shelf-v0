@@ -33,6 +33,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 }
 
 // review this 
+// use cascade? 
 export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
@@ -60,11 +61,8 @@ export async function DELETE(
       RETURNING id
     `;
 
-    if (result.rowCount > 0) {
       return NextResponse.json({ message: 'Collection deleted successfully' }, { status: 200 });
-    } else {
-      return NextResponse.json({ error: 'Collection not found or unauthorized' }, { status: 404 });
-    }
+    
   } catch (error) {
     console.error('Error deleting collection:', error);
     return NextResponse.json({ error: 'Failed to delete collection' }, { status: 500 });

@@ -18,6 +18,7 @@ export default function CollectionView({ collection }) {
       if (response.ok) {
         // check this 
         router.push('/collections');
+        router.refresh();
       }
     } catch (error) {
       console.error('Error deleting collection:', error);

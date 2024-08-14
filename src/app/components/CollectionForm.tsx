@@ -13,7 +13,7 @@ export default function CollectionForm() {
   
   const router = useRouter();
 
-  // clear form? 
+  // is this how I should cancel? 
   const handleCancel = () => {
     router.push('/collections');
   };

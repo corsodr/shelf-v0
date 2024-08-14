@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
-import { Collection, Preview } from '@/app/types/types';
 import { getCollections } from '@/app/lib/collections';
 
 export async function GET() {
@@ -47,13 +46,6 @@ export async function POST(req: Request) {
       SELECT ${collectionId}, url, title, domain, favicon, description, image
       FROM json_populate_recordset(null::link_previews, ${JSON.stringify(linkPreviews)})
     `;
-
-    //  for (const link of links) {
-    //   await sql`
-    //     INSERT INTO link_previews (collection_id, url, title, favicon, description, image)
-    //     VALUES (${collectionId}, ${link.url}, ${link.title}, ${link.favicon}, ${link.description}, ${link.image})
-    //   `;
-    // }
 
     await sql`COMMIT`;
 
