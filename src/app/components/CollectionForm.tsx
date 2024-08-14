@@ -12,13 +12,7 @@ export default function CollectionForm() {
   const [error, setError] = useState<string | null>(null);
   
   const router = useRouter();
-
-  // is this how I should cancel? 
-  const handleCancel = () => {
-    router.push('/collections');
-  };
   
-
   const fetchPreview = async () => {
     setError(null);
 
@@ -53,7 +47,6 @@ export default function CollectionForm() {
     setError(null);
 
     try {
-      console.log('linkPreviews', linkPreviews);
       const response = await fetch('/api/collections', {
         method: 'POST',
         headers: {
@@ -70,7 +63,6 @@ export default function CollectionForm() {
       }
       
       const result = await response.json();
-      // review this - how does colletion list update? 
       router.push(`/collections/${result.id}`);
       router.refresh(); 
     } catch (error) {
@@ -117,7 +109,7 @@ export default function CollectionForm() {
         </button>
         <button
             className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
-            onClick={handleCancel}
+            onClick={() => router.push('/collections')}
         >
           Cancel
         </button>

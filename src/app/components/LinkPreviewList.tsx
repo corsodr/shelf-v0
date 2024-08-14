@@ -1,13 +1,12 @@
 import LinkPreview from '@/app/components/LinkPreview';
 
-// check preview.url for key 
 export default function LinkPreviewList({ linkPreviews }) {
   return (
     <div>
-      {linkPreviews.map((linkPreview) => (
+      {linkPreviews.map((linkPreview, index) => (
         <LinkPreview 
-            key={linkPreview.url}
-            linkPreview={linkPreview}
+          key={linkPreview.id || `${linkPreview.url}-${index}`}
+          linkPreview={linkPreview}
         />
       ))}
     </div>
