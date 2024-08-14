@@ -1,20 +1,6 @@
 import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
-import { getCollections } from '@/app/lib/collections';
-
-export async function GET() {
-  try {
-    const collections = await getCollections();
-    return NextResponse.json({ collections }, { status: 200 });
-  } catch (error) {
-    if (error.message === "Unauthorized") {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-    console.error('Error fetching collections:', error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
-  }
-}
 
 export async function POST(req: Request) {
   const session = await auth();

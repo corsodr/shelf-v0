@@ -9,7 +9,6 @@ export default async function CollectionPage({ params }: { params: { id: string 
     redirect('/login'); 
   }
 
-  // confirm it makes sense to put this here 
   const collection = await getCollection(params.id);
 
   return (

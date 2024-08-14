@@ -10,6 +10,13 @@ export default async function CollectionsPage() {
 
   const collections = await getCollections();
 
+  // add collections to state 
+  // pass first collection to collections/id
+  // pass collections to collection list 
+  // figure out new collection 
+  // figure out delete collection 
+  // figure out edit collection 
+
   if (collections.length === 0) {
     return (
       <h1 className='text-xl font-bold'>Create your first collection.</h1>
