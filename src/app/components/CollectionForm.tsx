@@ -1,14 +1,14 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-export default function CollectionForm() {
-  const [name, setName] = useState('');
+export default function CollectionForm({ initialData }) {
+  const [name, setName] = useState(initialData?.name || '');
   const [link, setLink] = useState('');
-  const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>([]); 
-  // review typing + setting error to null + error handling 
+  const [originalLinkPreviews, setOriginalLinkPreviews] = useState<ApiPreview[]>(initialData?.linkPreviews || []);
+  const [newLinkPreviews, setNewLinkPreviews] = useState<ApiPreview[]>([]);
   const [error, setError] = useState<string | null>(null);
   
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function CollectionForm() {
       }
 
       const data: ApiPreview = await response.json();
-      setLinkPreviews((prevPreviews) => [...prevPreviews, data]);
+      setNewLinkPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
@@ -40,35 +40,43 @@ export default function CollectionForm() {
 
   const submitCollection = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (linkPreviews.length === 0) {
+    const allLinkPreviews = [...originalLinkPreviews, ...newLinkPreviews];
+    if (allLinkPreviews.length === 0) {
       setError('Please add at least one link to your collection.');
       return;
     }
     setError(null);
 
+    const url = initialData ? `/api/collections/${initialData.id}` : '/api/collections';
+    const method = initialData ? 'PUT' : 'POST';
+
     try {
-      const response = await fetch('/api/collections', {
-        method: 'POST',
+      const response = await fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name,
-          linkPreviews
+          linkPreviews: allLinkPreviews
         })
       });
   
       if (!response.ok) {
-        throw new Error(`Failed to create collection. Status: ${response.status}`);
+        throw new Error(`Failed to ${initialData ? 'update' : 'create'} collection. Status: ${response.status}`);
       }
       
       const result = await response.json();
       router.push(`/collections/${result.id}`);
       router.refresh(); 
     } catch (error) {
-      console.error('Error submitting collection:', error);
-      setError('Failed to create collection. Please try again.');
+      console.error(`Error ${initialData ? 'updating' : 'submitting'} collection:`, error);
+      setError(`Failed to ${initialData ? 'update' : 'create'} collection. Please try again.`);
     }
+  };
+
+  const handleCancel = () => {
+    router.push(initialData ? `/collections/${initialData.id}` : '/collections');
   };
   
   return (
@@ -82,7 +90,16 @@ export default function CollectionForm() {
         autoFocus
         required
       />
-      {linkPreviews.length > 0 && <LinkPreviewList linkPreviews={linkPreviews} />} 
+      {originalLinkPreviews.length > 0 && (
+        <div>
+          <LinkPreviewList linkPreviews={originalLinkPreviews} />
+        </div>
+      )}
+      {newLinkPreviews.length > 0 && (
+        <div>
+          <LinkPreviewList linkPreviews={newLinkPreviews} />
+        </div>
+      )}
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="flex gap-3 mb-4">
         <input 
@@ -105,11 +122,12 @@ export default function CollectionForm() {
           type="submit"
           className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
         >
-          Save
+          {initialData ? 'Update' : 'Save'}
         </button>
         <button
-            className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
-            onClick={() => router.push('/collections')}
+          type="button"
+          className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
+          onClick={handleCancel}
         >
           Cancel
         </button>

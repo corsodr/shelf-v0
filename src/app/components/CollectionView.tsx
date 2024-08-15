@@ -7,6 +7,10 @@ export default function CollectionView({ collection }) {
   
   const { name, linkPreviews } = collection;
 
+  const handleEdit = () => {
+    router.push(`/collections/${collection.id}/update`);
+  }
+
   const handleDelete = async () => {
     try {
       const response = await fetch (`/api/collections/${collection.id}`, {
@@ -33,8 +37,8 @@ export default function CollectionView({ collection }) {
       )}
        <div className="flex gap-5">
           <button 
-            type="submit"
             className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
+            onClick={handleEdit}
           >
             Edit
           </button>
