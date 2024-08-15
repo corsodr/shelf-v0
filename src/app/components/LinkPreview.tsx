@@ -3,19 +3,16 @@ import { X } from 'lucide-react';
 
 export default function LinkPreview({ linkPreview, onDelete }) {
   const { url, domain, title, image } = linkPreview;
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="relative mb-4 w-full"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="flex items-center gap-3 mb-4"
     >
       <a 
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="block mb-4 w-full"
+        className="flex-grow"
       >
         <div className="flex w-[800px] h-[117px] bg-slate-100 hover:bg-slate-200 rounded-lg overflow-hidden">
           {image && (
@@ -31,11 +28,11 @@ export default function LinkPreview({ linkPreview, onDelete }) {
           </div>
         </div>
       </a>
-      {onDelete && isHovered && (
+      {onDelete && (
         <button
-          onClick={(e) => onDelete()}
+          onClick={onDelete}
         >
-          <X size={16}/>
+          <X size={20}/>
         </button>
       )}
     </div>
