@@ -5,6 +5,6 @@ export default async function UpdateCollectionPage({ params }: { params: { id: s
   const collection = await getCollection(params.id);
 
   return (
-    <CollectionForm initialData={collection} />
+    <CollectionForm currentCollection={collection} />
   );
 }

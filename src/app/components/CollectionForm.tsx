@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
-export default function CollectionForm({ initialData }) {
-  const [name, setName] = useState(initialData?.name || '');
+export default function CollectionForm({ currentCollection }) {
+  const [name, setName] = useState(currentCollection?.name || '');
   const [link, setLink] = useState('');
-  const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>(initialData?.linkPreviews || []);
+  const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>(currentCollection?.linkPreviews || []);
   const [error, setError] = useState<string | null>(null);
   
   const router = useRouter();
@@ -45,8 +45,8 @@ export default function CollectionForm({ initialData }) {
     }
     setError(null);
 
-    const url = initialData ? `/api/collections/${initialData.id}` : '/api/collections';
-    const method = initialData ? 'PUT' : 'POST';
+    const url = currentCollection ? `/api/collections/${currentCollection.id}` : '/api/collections';
+    const method = currentCollection ? 'PUT' : 'POST';
 
     try {
       const response = await fetch(url, {
@@ -61,15 +61,15 @@ export default function CollectionForm({ initialData }) {
       });
   
       if (!response.ok) {
-        throw new Error(`Failed to ${initialData ? 'update' : 'create'} collection. Status: ${response.status}`);
+        throw new Error(`Failed to ${currentCollection ? 'update' : 'create'} collection. Status: ${response.status}`);
       }
       
       const result = await response.json();
       router.push(`/collections/${result.id}`);
       router.refresh(); 
     } catch (error) {
-      console.error(`Error ${initialData ? 'updating' : 'submitting'} collection:`, error);
-      setError(`Failed to ${initialData ? 'update' : 'create'} collection. Please try again.`);
+      console.error(`Error ${currentCollection ? 'updating' : 'submitting'} collection:`, error);
+      setError(`Failed to ${currentCollection ? 'update' : 'create'} collection. Please try again.`);
     }
   };
 
@@ -111,12 +111,12 @@ export default function CollectionForm({ initialData }) {
           type="submit"
           className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
         >
-          {initialData ? 'Update' : 'Save'}
+          {currentCollection ? 'Update' : 'Save'}
         </button>
         <button
           type="button"
           className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
-          onClick={() => router.push(initialData ? `/collections/${initialData.id}` : '/collections')}
+          onClick={() => router.push(currentCollection ? `/collections/${currentCollection.id}` : '/collections')}
         >
           Cancel
         </button>
