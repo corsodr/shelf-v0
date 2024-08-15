@@ -10,9 +10,9 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { title, linkPreviews } = await req.json();
+    const { name, linkPreviews } = await req.json();
 
-    if (!title || !linkPreviews || !Array.isArray(linkPreviews)) {
+    if (!name || !linkPreviews || !Array.isArray(linkPreviews)) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     const collectionResult = await sql<{ id: string }>`
       INSERT INTO collections (user_id, name)
-      VALUES (${session.user.id}, ${title})
+      VALUES (${session.user.id}, ${name})
       RETURNING id
     `;
 

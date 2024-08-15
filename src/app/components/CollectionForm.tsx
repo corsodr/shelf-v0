@@ -5,7 +5,7 @@ import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { ApiPreview } from '@/app/types/types';
 
 export default function CollectionForm() {
-  const [title, setTitle] = useState('');
+  const [name, setName] = useState('');
   const [link, setLink] = useState('');
   const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>([]); 
   // review typing + setting error to null + error handling 
@@ -53,7 +53,7 @@ export default function CollectionForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          title,
+          name,
           linkPreviews
         })
       });
@@ -75,9 +75,9 @@ export default function CollectionForm() {
     <form onSubmit={submitCollection} className="flex flex-col w-[500px]">
       <input 
         type="text" 
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         className="text-4xl font-bold focus:outline-none placeholder-gray-300 mb-4"
         autoFocus
         required
