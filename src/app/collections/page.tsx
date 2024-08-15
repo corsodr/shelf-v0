@@ -1,28 +1,16 @@
-'use client'
-
-import { useState, useEffect } from 'react';
-import { useCollectionsContext } from '@/app/context/CollectionsContext';
-import CollectionForm from '@/components/CollectionForm';
-import CollectionView from '@/components/CollectionView';
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { getCollections } from '@/app/lib/collections';
 import { auth } from "@/auth";
 
-// where to wrap provider? 
 export default async function CollectionsPage() {
   const session = await auth();
   if (!session?.user) {
     redirect('/');
   }
 
-  const { collections, fetchCollections, currentCollection, fetchCollection } = useCollectionsContext();
-  
-  // one thing at a time 
+  const collections = await getCollections();
 
-  useEffect(() => {
-    fetchCollections();
-  }, []);
-
+  // add collections to state 
 
   if (collections.length === 0) {
     return (
