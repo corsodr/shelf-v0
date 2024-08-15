@@ -37,6 +37,10 @@ export default function CollectionForm({ currentCollection }) {
     }
   }
 
+  const deletePreview = (indexToDelete: number) => {
+    setLinkPreviews((prevPreviews) => prevPreviews.filter((_, index) => index !== indexToDelete));
+  }
+
   const submitCollection = async (e: React.FormEvent) => {
     e.preventDefault();
     if (linkPreviews.length === 0) {
@@ -86,7 +90,7 @@ export default function CollectionForm({ currentCollection }) {
       />
       {linkPreviews.length > 0 && (
         <div>
-          <LinkPreviewList linkPreviews={linkPreviews} />
+          <LinkPreviewList linkPreviews={linkPreviews} onDelete={deletePreview} />
         </div>
       )}
       {error && <p className="text-red-500 mb-4">{error}</p>}

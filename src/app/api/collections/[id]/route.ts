@@ -24,20 +24,17 @@ export async function PUT(
 
     await sql`BEGIN`;
 
-    // Update collection name
     await sql`
       UPDATE collections
       SET name = ${name}
       WHERE id = ${collectionId} AND user_id = ${userId}
     `;
 
-    // Delete existing link previews
     await sql`
       DELETE FROM link_previews
       WHERE collection_id = ${collectionId}
     `;
 
-    // Insert updated link previews
     await sql`
       INSERT INTO link_previews (collection_id, url, title, domain, favicon, description, image)
       SELECT ${collectionId}, url, title, domain, favicon, description, image
@@ -55,7 +52,7 @@ export async function PUT(
   }
 }
  
-// use cascade
+// use cascade? 
 export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
