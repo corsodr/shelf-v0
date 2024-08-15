@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { getCollection, getCollections } from '@/app/lib/collections';
 
-const CollectionsContext = createContext();
+const CollectionsContext = createContext(null);
 
 export function CollectionsProvider({ children }) {
     const [collections, setCollections] = useState([]);
@@ -34,4 +34,5 @@ export function CollectionsProvider({ children }) {
 
 }
 
-export const useCollections = () => useContext(CollectionsContext);
+// is this a custom hook 
+export const useCollectionsContext = () => useContext(CollectionsContext);
