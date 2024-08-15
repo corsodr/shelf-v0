@@ -5,9 +5,7 @@ import LinkPreviewList from '@/app/components/LinkPreviewList';
 export default function CollectionView({ collection }) {
   const router = useRouter();
   
-  // change name to title 
-  // change snake case to camel case
-  const { name, link_previews } = collection;
+  const { name, linkPreviews } = collection;
 
   const handleDelete = async () => {
     try {
@@ -28,8 +26,8 @@ export default function CollectionView({ collection }) {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6">{name}</h1>
-      {link_previews && link_previews.length > 0 ? (
-        <LinkPreviewList linkPreviews={link_previews} />
+      {linkPreviews && linkPreviews.length > 0 ? (
+        <LinkPreviewList linkPreviews={linkPreviews} />
       ) : (
         <p>This collection is empty.</p>
       )}

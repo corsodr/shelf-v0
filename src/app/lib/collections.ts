@@ -23,8 +23,8 @@ export async function getCollections() {
           'favicon', link_previews.favicon,
           'description', link_previews.description,
           'image', link_previews.image,
-          'created_at', link_previews.created_at
-        )) AS link_previews
+          'createdAt', link_previews.created_at
+        )) AS linkPreviews
       FROM 
         collections
         LEFT JOIN link_previews ON collections.id = link_previews.collection_id
@@ -63,8 +63,8 @@ export async function getCollection(collectionId: string) {
           'favicon', link_previews.favicon,
           'description', link_previews.description,
           'image', link_previews.image,
-          'created_at', link_previews.created_at
-        )) AS link_previews
+          'createdAt', link_previews.created_at
+        )) AS "linkPreviews"
       FROM 
         collections
         LEFT JOIN link_previews ON collections.id = link_previews.collection_id
