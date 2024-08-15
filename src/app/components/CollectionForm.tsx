@@ -7,8 +7,7 @@ import { ApiPreview } from '@/app/types/types';
 export default function CollectionForm({ initialData }) {
   const [name, setName] = useState(initialData?.name || '');
   const [link, setLink] = useState('');
-  const [originalLinkPreviews, setOriginalLinkPreviews] = useState<ApiPreview[]>(initialData?.linkPreviews || []);
-  const [newLinkPreviews, setNewLinkPreviews] = useState<ApiPreview[]>([]);
+  const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>(initialData?.linkPreviews || []);
   const [error, setError] = useState<string | null>(null);
   
   const router = useRouter();
@@ -30,7 +29,7 @@ export default function CollectionForm({ initialData }) {
       }
 
       const data: ApiPreview = await response.json();
-      setNewLinkPreviews((prevPreviews) => [...prevPreviews, data]);
+      setLinkPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
@@ -40,8 +39,7 @@ export default function CollectionForm({ initialData }) {
 
   const submitCollection = async (e: React.FormEvent) => {
     e.preventDefault();
-    const allLinkPreviews = [...originalLinkPreviews, ...newLinkPreviews];
-    if (allLinkPreviews.length === 0) {
+    if (linkPreviews.length === 0) {
       setError('Please add at least one link to your collection.');
       return;
     }
@@ -58,7 +56,7 @@ export default function CollectionForm({ initialData }) {
         },
         body: JSON.stringify({
           name,
-          linkPreviews: allLinkPreviews
+          linkPreviews
         })
       });
   
@@ -75,10 +73,6 @@ export default function CollectionForm({ initialData }) {
     }
   };
 
-  const handleCancel = () => {
-    router.push(initialData ? `/collections/${initialData.id}` : '/collections');
-  };
-  
   return (
     <form onSubmit={submitCollection} className="flex flex-col w-[500px]">
       <input 
@@ -90,14 +84,9 @@ export default function CollectionForm({ initialData }) {
         autoFocus
         required
       />
-      {originalLinkPreviews.length > 0 && (
+      {linkPreviews.length > 0 && (
         <div>
-          <LinkPreviewList linkPreviews={originalLinkPreviews} />
-        </div>
-      )}
-      {newLinkPreviews.length > 0 && (
-        <div>
-          <LinkPreviewList linkPreviews={newLinkPreviews} />
+          <LinkPreviewList linkPreviews={linkPreviews} />
         </div>
       )}
       {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -127,7 +116,7 @@ export default function CollectionForm({ initialData }) {
         <button
           type="button"
           className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
-          onClick={handleCancel}
+          onClick={() => router.push(initialData ? `/collections/${initialData.id}` : '/collections')}
         >
           Cancel
         </button>
