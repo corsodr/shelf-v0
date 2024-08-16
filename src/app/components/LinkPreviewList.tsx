@@ -7,7 +7,7 @@ export default function LinkPreviewList({ linkPreviews, onDelete }) {
         <LinkPreview 
           key={linkPreview.id || `${linkPreview.url}-${index}`}
           linkPreview={linkPreview}
-          onDelete={onDelete ? () => onDelete(index) : undefined}
+          onDelete={onDelete && (() => onDelete(index))}
         />
       ))}
     </div>

@@ -115,7 +115,7 @@ export default function CollectionForm({ currentCollection }) {
           type="submit"
           className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
         >
-          {currentCollection ? 'Update' : 'Save'}
+          Save
         </button>
         <button
           type="button"
