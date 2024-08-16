@@ -1,7 +1,4 @@
-// customize session type? 
-// get feedback 
-// goal is rock solid data flow
-
+// change to APILinkPreview
 export interface ApiPreview {
   url: string;
   domain: string;
@@ -11,18 +8,18 @@ export interface ApiPreview {
   image: string;
 }
 
-export interface Preview {
-    id: string;
+export interface DBLinkPreview {
+    id: number;
     url: string;
     title: string;
+    domain: string;
     favicon: string;
     description: string;
     image: string;
-    created_at: string;
+    createdAt: string;
   }
-
-  export interface Collection {
-    id: string;
+  export interface DBCollection {
+    id: number;
     name: string;
-    link_previews: Preview[];
-  }
+    linkPreviews: DBLinkPreview[];
+  };

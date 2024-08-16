@@ -1,7 +1,8 @@
 import { sql } from '@vercel/postgres';
 import { auth } from "@/auth";
+import { DBCollection } from '@/app/types/types';
 
-export async function getCollections() {
+export async function getCollections(): Promise<DBCollection[]> {
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -11,7 +12,7 @@ export async function getCollections() {
   const userId = session.user.id;
 
   try { 
-    const collectionsResult = await sql`
+    const collectionsResult = await sql<DBCollection>`
       SELECT 
         collections.id,
         collections.name,
@@ -24,7 +25,7 @@ export async function getCollections() {
           'description', link_previews.description,
           'image', link_previews.image,
           'createdAt', link_previews.created_at
-        )) AS linkPreviews
+        )) AS "linkPreviews"
       FROM 
         collections
         LEFT JOIN link_previews ON collections.id = link_previews.collection_id
@@ -41,7 +42,7 @@ export async function getCollections() {
   }
 }
 
-export async function getCollection(collectionId: string) {
+export async function getCollection(collectionId: string): Promise<DBCollection> {
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -51,7 +52,7 @@ export async function getCollection(collectionId: string) {
   const userId = session.user.id;
 
   try { 
-    const result = await sql`
+    const result = await sql<DBCollection>`
       SELECT 
         collections.id,
         collections.name,
