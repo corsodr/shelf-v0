@@ -1,5 +1,4 @@
-// change to APILinkPreview
-export interface ApiPreview {
+export interface APIPreview {
   url: string;
   domain: string;
   title: string;

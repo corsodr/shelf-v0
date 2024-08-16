@@ -1,15 +1,22 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
-import { ApiPreview } from '@/app/types/types';
+import { APIPreview } from '@/app/types/types';
+import { DBCollection } from "@/app/types/types";
 
-export default function CollectionForm({ currentCollection }) {
+interface CollectionFormProps {
+  currentCollection?: DBCollection 
+}
+
+export default function CollectionForm({ currentCollection }: CollectionFormProps) {
   const [name, setName] = useState(currentCollection?.name || '');
   const [link, setLink] = useState('');
-  const [linkPreviews, setLinkPreviews] = useState<ApiPreview[]>(currentCollection?.linkPreviews || []);
+  const [linkPreviews, setLinkPreviews] = useState<APIPreview[]>(currentCollection?.linkPreviews || []);
   const [error, setError] = useState<string | null>(null);
   
+  console.log('currentCollection', currentCollection);
+
   const router = useRouter();
   
   const fetchPreview = async () => {
@@ -28,7 +35,7 @@ export default function CollectionForm({ currentCollection }) {
         throw new Error(`Failed to fetch preview. Status: ${response.status}`);
       }
 
-      const data: ApiPreview = await response.json();
+      const data: APIPreview = await response.json();
       setLinkPreviews((prevPreviews) => [...prevPreviews, data]);
       setLink('');
     } catch (error) {
