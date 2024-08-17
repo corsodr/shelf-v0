@@ -7,6 +7,10 @@ export interface APIPreview {
   image: string;
 }
 
+export interface DBLinkPreview extends APIPreview {
+  id: number; 
+}
+
 export interface DBLinkPreview {
     id: number;
     url: string;

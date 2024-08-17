@@ -3,20 +3,25 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { APIPreview } from '@/app/types/types';
+import { DBLinkPreview } from "@/app/types/types";
 import { DBCollection } from "@/app/types/types";
 
 interface CollectionFormProps {
   currentCollection?: DBCollection 
 }
 
+interface CollectionResult {
+  id: number;  
+}
+
+type LinkPreview = APIPreview | DBLinkPreview;
+
 export default function CollectionForm({ currentCollection }: CollectionFormProps) {
   const [name, setName] = useState(currentCollection?.name || '');
   const [link, setLink] = useState('');
-  const [linkPreviews, setLinkPreviews] = useState<APIPreview[]>(currentCollection?.linkPreviews || []);
+  const [linkPreviews, setLinkPreviews] = useState<LinkPreview[]>(currentCollection?.linkPreviews || []);
   const [error, setError] = useState<string | null>(null);
   
-  console.log('currentCollection', currentCollection);
-
   const router = useRouter();
   
   const fetchPreview = async () => {
@@ -75,7 +80,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         throw new Error(`Failed to ${currentCollection ? 'update' : 'create'} collection. Status: ${response.status}`);
       }
       
-      const result = await response.json();
+      const result: CollectionResult = await response.json();
       router.push(`/collections/${result.id}`);
       router.refresh(); 
     } catch (error) {

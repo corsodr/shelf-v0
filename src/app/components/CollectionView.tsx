@@ -1,8 +1,13 @@
 'use client'
 import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
+import { DBCollection } from "@/app/types/types";
 
-export default function CollectionView({ collection }) {
+interface CollectionViewProps {
+  collection: DBCollection;
+}
+
+export default function CollectionView({ collection }: CollectionViewProps) {
   const router = useRouter();
   
   const { name, linkPreviews } = collection;
@@ -18,7 +23,6 @@ export default function CollectionView({ collection }) {
       });
 
       if (response.ok) {
-        // check this 
         router.push('/collections');
         router.refresh();
       }

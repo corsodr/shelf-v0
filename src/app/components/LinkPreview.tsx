@@ -1,6 +1,14 @@
 import { X } from 'lucide-react';
+import { APIPreview, DBLinkPreview } from '@/app/types/types';
 
-export default function LinkPreview({ linkPreview, onDelete }) {
+type LinkPreview = APIPreview | DBLinkPreview;
+
+interface LinkPreviewProps {
+  linkPreview: LinkPreview;
+  onDelete?: () => void;
+}
+
+export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps) {
   const { url, domain, title, image } = linkPreview;
 
   return (
@@ -29,6 +37,7 @@ export default function LinkPreview({ linkPreview, onDelete }) {
       </a>
       {onDelete && (
         <button
+          type="button"
           onClick={onDelete}
         >
           <X size={20}/>
