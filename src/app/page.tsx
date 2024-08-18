@@ -16,13 +16,10 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="container mx-auto px-4 py-6">
-        <div className="flex gap-3">
-          <img 
-            src="/images/shelf-logo.svg" alt="Shelf Logo" 
-            className="h-8"
-          />
-          <h3 className="text-2xl font-bold">Shelf</h3>
-        </div>
+        <img 
+          src="/images/s-logo.svg" alt="Shelf Logo" 
+          className="h-10"
+        />
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8 flex flex-col items-center">
@@ -38,13 +35,9 @@ export default async function Home() {
         <section className="w-full max-w-2xl mt-12">
           <h2 className="text-2xl font-bold mb-4">Vision</h2>
           <p className="mb-8">
-            Collections are amazing: 
+            Show and tell 
             {/* images of collections: playlist, library, museum, blog, newsletter, stamps */}
           </p>
-          <p className="mb-8">
-            Shelf aims to be the best tool for creating and sharing collections online. 
-          </p>
-
           {/* style this as a list */}
           <h2 className="text-2xl font-bold mb-4">Roadmap</h2>
           <ul className="mb-8">

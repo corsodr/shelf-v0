@@ -10,9 +10,9 @@ export function SignIn() {
     >
        <button
         type="submit"
-        className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="flex items-center justify-center text-[16px] px-5 py-3 text-sm font-medium bg-white border border-slate-300 rounded-lg"
       >
-        <span className="mr-2 text-lg font-bold text-blue-500">G</span>
+        <img src="/images/google-icon.svg" alt="" className="mr-3 h-5" />
         Continue with Google
       </button>
     </form>
