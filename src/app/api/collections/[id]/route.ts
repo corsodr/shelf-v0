@@ -62,6 +62,7 @@ export async function PUT(
 }
  
 export async function DELETE(
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   const session = await auth();
@@ -74,18 +75,12 @@ export async function DELETE(
   const collectionId = params.id;
 
   try {
-    await sql`
-      DELETE FROM link_previews
-      WHERE collection_id = ${collectionId}
-    `;
-
     const result = await sql`
-      DELETE FROM collections
-      WHERE id = ${collectionId} AND user_id = ${userId}
-      RETURNING id
-    `;
+    DELETE FROM collections
+    WHERE id = ${collectionId} AND user_id = ${userId}
+  `;
 
-      return NextResponse.json({ message: 'Collection deleted successfully' }, { status: 200 });
+    return NextResponse.json({ message: 'Collection deleted successfully' }, { status: 200 });
     
   } catch (error) {
     console.error('Error deleting collection:', error);
