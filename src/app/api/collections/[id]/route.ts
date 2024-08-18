@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
 import { sql } from '@vercel/postgres';
 import { auth } from '@/auth';
+import { APIPreview, DBLinkPreview } from '@/app/types/types';
+
+type LinkPreview = APIPreview | DBLinkPreview;
+
+interface UpdateCollectionBody {
+  name: string;
+  linkPreviews: LinkPreview[];
+}
 
 export async function PUT(
   request: Request,
@@ -16,7 +24,8 @@ export async function PUT(
   const collectionId = params.id;
 
   try {
-    const { name, linkPreviews } = await request.json();
+    const body: UpdateCollectionBody = await request.json();
+    const { name, linkPreviews } = body;
 
     if (!name || !linkPreviews || !Array.isArray(linkPreviews)) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
@@ -52,9 +61,7 @@ export async function PUT(
   }
 }
  
-// use cascade? 
 export async function DELETE(
-  request: Request,
   { params }: { params: { id: string } }
 ) {
   const session = await auth();

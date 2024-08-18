@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from "@/auth";
 import { sql } from '@vercel/postgres';
+import { APIPreview } from '@/app/types/types';
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -10,7 +11,8 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { name, linkPreviews } = await req.json();
+    const body: { name: string; linkPreviews: APIPreview[] } = await req.json();
+    const { name, linkPreviews } = body;
 
     if (!name || !linkPreviews || !Array.isArray(linkPreviews)) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
