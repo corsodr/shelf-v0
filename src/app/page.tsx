@@ -1,10 +1,7 @@
-// use Next image? 
-// color palette
-// rotate anything 
-
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { SignIn } from "@/app/components/SignIn";
+import RotatingText from "@/app/components/RotatingText";
 
 export default async function Home() {
   const session = await auth();
@@ -23,8 +20,10 @@ export default async function Home() {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8 flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-6 text-center">
-          Collect anything with Shelf
+        <h1 className="text-6xl font-bold mb-6 text-center leading-tight">
+          Collect <RotatingText />
+          <br />
+          with Shelf
         </h1>
         <SignIn />
 
@@ -38,9 +37,8 @@ export default async function Home() {
             Show and tell 
             {/* images of collections: playlist, library, museum, blog, newsletter, stamps */}
           </p>
-          {/* style this as a list */}
           <h2 className="text-2xl font-bold mb-4">Roadmap</h2>
-          <ul className="mb-8">
+          <ul className="list-disc list-inside mb-8">
            <li>First</li>
            <li>Second</li>
            <li>Third</li>

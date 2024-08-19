@@ -1,6 +1,5 @@
 import CollectionList from "@/app/components/CollectionList";
 import { SignOut } from "@/app/components/SignOut";
-import Link from 'next/link';
 
 export default function CollectionsLayout({
   children,
@@ -9,10 +8,11 @@ export default function CollectionsLayout({
 }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b px-4 py-4 flex items-center justify-between">
-        <Link href="/collections/new" className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-          Create
-        </Link>
+      <header className="border-b border-slate-300 px-4 py-4 flex items-center justify-between">
+        <img 
+          src="/images/s-logo.svg" alt="Shelf Logo" 
+          className="h-10"
+        />
         <SignOut />
       </header>
       <div className="flex flex-1">

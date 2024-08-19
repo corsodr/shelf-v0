@@ -1,6 +1,13 @@
-import { signOut } from "@/auth";
+import { signOut, auth } from "@/auth";
 
-export function SignOut() {
+// clicking on button should open modal with sign out button 
+
+export async function SignOut() {
+  // is this the right way to get the session? 
+  const session = await auth();
+  // review this 
+  const userInitial = session?.user?.name ? session.user.name[0].toUpperCase() : '';
+  
   return (
     <form
       action={async () => {

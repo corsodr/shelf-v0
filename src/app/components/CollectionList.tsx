@@ -5,8 +5,11 @@ export default async function CollectionList() {
   const collections = await getCollections();
 
   return (
-    <nav className="w-80 border-r overflow-y-auto">
-      <div className="p-4">
+    <nav className="w-80 border-r border-slate-300 overflow-y-auto">
+      <div className="flex justify-center mt-4">
+        <Link href="/collections/new" className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-5 rounded">
+          Create
+        </Link>
         <ul className="space-y-2">
           {collections.map(collection => (
             <li key={collection.id}>
