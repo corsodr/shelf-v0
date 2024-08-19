@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useRef, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { SignOut } from './SignOut';
@@ -42,6 +43,9 @@ export default function UserAvatar() {
       </button>
       {isModalOpen && (
         <div ref={modalRef} className="absolute right-0 mt-2 w-48 bg-white border border-slate-300 rounded-md shadow-lg py-1 z-10">
+          <div className="px-4 py-2 border-b border-slate-200">
+            <p className="font-semibold text-slate-800">{session?.user?.name}</p>
+          </div>
           <SignOut />
         </div>
       )}

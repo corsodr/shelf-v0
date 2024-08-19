@@ -96,7 +96,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="text-4xl font-bold focus:outline-none placeholder-gray-300 mb-4"
+        className="border border-gray-400 p-3 rounded-lg w-full mb-4"
         autoFocus
         required
       />
