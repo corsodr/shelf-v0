@@ -1,5 +1,5 @@
 import CollectionList from "@/app/components/CollectionList";
-import { SignOut } from "@/app/components/SignOut";
+import UserAvatar from "@/app/components/UserAvatar";
 
 export default function CollectionsLayout({
   children,
@@ -13,7 +13,7 @@ export default function CollectionsLayout({
           src="/images/s-logo.svg" alt="Shelf Logo" 
           className="h-10"
         />
-        <SignOut />
+        <UserAvatar />
       </header>
       <div className="flex flex-1">
         <CollectionList />

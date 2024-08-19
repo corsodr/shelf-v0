@@ -1,21 +1,14 @@
-import { signOut, auth } from "@/auth";
+'use client';
 
-// clicking on button should open modal with sign out button 
+import { signOut } from "next-auth/react";
 
-export async function SignOut() {
-  // is this the right way to get the session? 
-  const session = await auth();
-  // review this 
-  const userInitial = session?.user?.name ? session.user.name[0].toUpperCase() : '';
-  
+export function SignOut() {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signOut({ redirectTo: "/" });
-      }}
+    <button 
+      onClick={() => signOut({ callbackUrl: '/' })}
+      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
     >
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Sign out</button>
-    </form>
+      Sign out
+    </button>
   );
 }
