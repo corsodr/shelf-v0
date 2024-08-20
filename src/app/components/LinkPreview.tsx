@@ -13,7 +13,7 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
 
   return (
     <div
-      className="flex items-center gap-3 mb-4"
+      className="flex items-center gap-3 mb-4 border border-slate-300 rounded"
     >
       <a 
         href={url}
@@ -21,12 +21,12 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
         rel="noopener noreferrer"
         className="flex-grow"
       >
-        <div className="flex w-[600px] h-[117px] hover:bg-slate-200 rounded-lg overflow-hidden">
+        <div className="flex w-[600px] h-[117px] rounded overflow-hidden hover:bg-slate-200">
           {image && (
             <img 
               src={image} 
               alt={`Thumbnail for ${title}`} 
-              className="object-cover w-[208px]" 
+              className=" w-[117px] rounded" 
             />
           )}
           <div className={`flex flex-col justify-center ${image ? 'ml-5' : 'p-5'}`}>
