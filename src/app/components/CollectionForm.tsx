@@ -106,7 +106,8 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         </div>
       )}
       {error && <p className="text-red-500 mb-4">{error}</p>}
-      <div className="flex gap-3 mb-4">
+      <div className="flex gap-3
+       mb-4">
         <input 
           type="url" 
           placeholder="Link"
@@ -116,16 +117,16 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         />
         <button 
           type="button"
-          className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-5 rounded"
+          className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"
           onClick={fetchPreview}
         >
           Add
         </button>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-3">
         <button 
           type="submit"
-          className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-5 rounded"
+          className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"
         >
           Save
         </button>

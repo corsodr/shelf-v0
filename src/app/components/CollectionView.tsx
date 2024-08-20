@@ -33,22 +33,22 @@ export default function CollectionView({ collection }: CollectionViewProps) {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">{name}</h1>
+      <h1 className="text-3xl font-bold py-3 mb-2">{name}</h1>
       {linkPreviews && linkPreviews.length > 0 ? (
         <LinkPreviewList linkPreviews={linkPreviews} />
       ) : (
         <p>This collection is empty.</p>
       )}
-       <div className="flex gap-5">
+       <div className="flex gap-3">
           <button 
-            className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
+            className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"
             onClick={handleEdit}
           >
             Edit
           </button>
           <button
-              className="bg-red-500 text-white px-5 py-3 rounded-lg"
-              onClick={handleDelete}
+            className="bg-slate-300 hover:bg-slate-500 font-medium py-2 px-5 rounded"
+            onClick={handleDelete}
           >
             Delete
           </button>
