@@ -96,7 +96,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="border border-gray-400 p-3 rounded-lg w-full mb-4"
+        className="text-3xl font-bold bg-slate-50 rounded-lg w-full focus:outline-none py-3 pl-0 mb-2"
         autoFocus
         required
       />
@@ -112,11 +112,11 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
           placeholder="Link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="border border-gray-400 p-3 rounded-lg w-full"
+          className="border border-gray-400 px-3 py-2 rounded-lg w-full"
         />
         <button 
           type="button"
-          className="bg-blue-500 text-white px-5 py-3 rounded-lg"
+          className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-5 rounded"
           onClick={fetchPreview}
         >
           Add
@@ -125,13 +125,13 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       <div className="flex gap-5">
         <button 
           type="submit"
-          className="bg-blue-500 text-white px-5 py-3 rounded-lg self-start"
+          className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-5 rounded"
         >
           Save
         </button>
         <button
           type="button"
-          className="bg-gray-300 text-gray-700 px-5 py-3 rounded-lg self-start"
+          className="bg-slate-300 hover:bg-slate-500 font-bold py-2 px-5 rounded"
           onClick={() => router.push(currentCollection ? `/collections/${currentCollection.id}` : '/collections')}
         >
           Cancel

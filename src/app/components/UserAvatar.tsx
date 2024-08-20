@@ -10,7 +10,7 @@ export default function UserAvatar() {
   const modalRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const userInitial = session?.user?.name?.[0] || '?';
+  const userInitial = session?.user?.name?.[0] || '';
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
