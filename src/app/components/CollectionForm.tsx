@@ -132,7 +132,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         </button>
         <button
           type="button"
-          className="bg-slate-300 hover:bg-slate-500 font-bold py-2 px-5 rounded"
+          className="bg-slate-300 hover:bg-slate-500 font-medium py-2 px-5 rounded"
           onClick={() => router.push(currentCollection ? `/collections/${currentCollection.id}` : '/collections')}
         >
           Cancel

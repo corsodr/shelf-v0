@@ -10,7 +10,7 @@ export default async function CollectionList() {
         <div className="flex justify-center mb-4">
           <Link 
             href="/collections/new" 
-            className="bg-slate-500 hover:bg-slate-700 text-white font-semibold py-2 px-5 rounded"
+            className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"
           >
             Create
           </Link>
@@ -20,9 +20,9 @@ export default async function CollectionList() {
             <li key={collection.id}>
               <Link 
                 href={`/collections/${collection.id}`} 
-                className="block px-4 py-6 rounded-md text-gray-700 hover:bg-slate-300 transition-colors duration-150 border border-slate-300"
+                className="block px-4 py-6 rounded-md hover:bg-slate-300 transition-colors duration-150 border border-slate-300"
               >
-                <h3 className="font-medium">{collection.name}</h3>
+                <h3 className="font-bold">{collection.name}</h3>
               </Link>
             </li>
           ))}
