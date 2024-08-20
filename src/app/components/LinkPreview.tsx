@@ -21,7 +21,7 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
         rel="noopener noreferrer"
         className="flex-grow"
       >
-        <div className="flex w-[800px] h-[117px] bg-slate-100 hover:bg-slate-200 rounded-lg overflow-hidden">
+        <div className="flex w-[600px] h-[117px] hover:bg-slate-200 rounded-lg overflow-hidden">
           {image && (
             <img 
               src={image} 
@@ -30,7 +30,7 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
             />
           )}
           <div className={`flex flex-col justify-center ${image ? 'ml-5' : 'p-5'}`}>
-            <h3 className="text-lg font-bold mb-2">{title}</h3>
+            <h3 className="text-xl font-bold mb-2">{title}</h3>
             <p className="text-slate-600">{domain}</p>
           </div>
         </div>

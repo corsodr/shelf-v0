@@ -123,7 +123,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
           Add
         </button>
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 mt-2">
         <button 
           type="submit"
           className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"

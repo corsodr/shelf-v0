@@ -37,7 +37,7 @@ export default function UserAvatar() {
         onClick={() => setIsModalOpen(!isModalOpen)}
         className={`w-10 h-10 rounded-full ${
           isModalOpen ? 'bg-slate-700' : 'bg-slate-500 hover:bg-slate-700'
-        } text-white flex items-center justify-center font-bold text-lg transition-colors duration-200`}
+        } text-white flex items-center justify-center font-semibold text-lg transition-colors duration-200`}
       >
         {userInitial}
       </button>
