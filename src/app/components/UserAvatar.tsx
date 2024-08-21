@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react';
 import { SignOut } from './SignOut';
 
 export default function UserAvatar() {
+  // is this destructuring or typescript? 
   const { data: session } = useSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -12,18 +13,18 @@ export default function UserAvatar() {
 
   const userInitial = session?.user?.name?.[0] || '';
 
+  // review this 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         modalRef.current &&
-        !modalRef.current.contains(event.target as Node) &&
+        !modalRef.current.contains(e.target as Node) &&
         buttonRef.current &&
-        !buttonRef.current.contains(event.target as Node)
+        !buttonRef.current.contains(e.target as Node)
       ) {
         setIsModalOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
