@@ -13,7 +13,7 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
   const { url, domain, title, image, favicon } = linkPreview;
 
   return (
-    <div className="flex items-stretch mb-4 border border-slate-300 rounded overflow-hidden">
+    <div className="flex items-stretch mb-4 overflow-hidden">
       <a 
         href={url}
         target="_blank"
@@ -25,22 +25,13 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
             <img 
               src={image} 
               alt={`Thumbnail for ${title}`} 
-              className="w-full h-full object-cover" 
+              className="w-full h-full object-cover rounded-lg" 
             />
           </div>
         )}
         <div className="flex flex-col justify-center flex-grow pl-3 hover:bg-slate-100">
-          <h3 className="text font-medium">{title}</h3>
-          <div className="flex items-center">
-            {favicon && (
-              <img 
-                src={favicon} 
-                alt={`Favicon for ${domain}`} 
-                className="w-5 h-5 mr-2"
-              />
-            )}
-            <p className="text-slate-600 truncate">{domain}</p>
-          </div>
+          <h3 className="font-medium">{title}</h3>
+          <p className="text-sm text-slate-500">{domain}</p>
         </div>
       </a>
       {onDelete && (
