@@ -1,3 +1,4 @@
+import React from 'react';
 import { X } from 'lucide-react';
 import { APIPreview, DBLinkPreview } from '@/app/types/types';
 
@@ -9,29 +10,36 @@ interface LinkPreviewProps {
 }
 
 export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps) {
-  const { url, domain, title, image } = linkPreview;
+  const { url, domain, title, image, favicon } = linkPreview;
 
   return (
-    <div
-      className="flex items-center gap-3 mb-4 border border-slate-300 rounded"
-    >
+    <div className="flex items-stretch mb-4 border border-slate-300 rounded overflow-hidden">
       <a 
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-grow"
+        className="flex-grow flex"
       >
-        <div className="flex w-[600px] h-[117px] rounded overflow-hidden hover:bg-slate-200">
-          {image && (
+        {image && (
+          <div className="w-[200px] h-[120px] flex-shrink-0 bg-slate-100">
             <img 
               src={image} 
               alt={`Thumbnail for ${title}`} 
-              className=" w-[117px] rounded" 
+              className="w-full h-full object-cover" 
             />
-          )}
-          <div className={`flex flex-col justify-center ${image ? 'ml-5' : 'p-5'}`}>
-            <h3 className="text-xl font-bold mb-2">{title}</h3>
-            <p className="text-slate-600">{domain}</p>
+          </div>
+        )}
+        <div className="flex flex-col justify-center flex-grow p-3 hover:bg-slate-100">
+          <h3 className="text-xl font-bold mb-2 line-clamp-2">{title}</h3>
+          <div className="flex items-center">
+            {favicon && (
+              <img 
+                src={favicon} 
+                alt={`Favicon for ${domain}`} 
+                className="w-5 h-5 mr-2"
+              />
+            )}
+            <p className="text-slate-600 truncate">{domain}</p>
           </div>
         </div>
       </a>
@@ -39,6 +47,7 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
         <button
           type="button"
           onClick={onDelete}
+          className="px-3 hover:bg-slate-200 flex items-center"
         >
           <X size={20}/>
         </button>
