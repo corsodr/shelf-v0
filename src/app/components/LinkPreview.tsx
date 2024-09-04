@@ -21,7 +21,7 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
         className="flex-grow flex"
       >
         {image && (
-          <div className="w-[200px] h-[120px] flex-shrink-0 bg-slate-100">
+          <div className="w-[60px] h-[60px] flex-shrink-0 bg-slate-100">
             <img 
               src={image} 
               alt={`Thumbnail for ${title}`} 
@@ -29,8 +29,8 @@ export default function LinkPreview({ linkPreview, onDelete }: LinkPreviewProps)
             />
           </div>
         )}
-        <div className="flex flex-col justify-center flex-grow p-3 hover:bg-slate-100">
-          <h3 className="text-xl font-bold mb-2 line-clamp-2">{title}</h3>
+        <div className="flex flex-col justify-center flex-grow pl-3 hover:bg-slate-100">
+          <h3 className="text font-medium">{title}</h3>
           <div className="flex items-center">
             {favicon && (
               <img 
