@@ -6,21 +6,21 @@ export default async function CollectionList() {
 
   return (
     <nav className="w-80 border-r border-slate-300 overflow-y-auto">
-      <div className="flex flex-col justify-center p-4 mt-4">
-        <div className="flex justify-center mb-4">
+      <div className="flex flex-col mt-4">
+        <div className="mb-4 px-4">
           <Link 
             href="/collections/new" 
-            className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"
+            className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-4 rounded block text-center"
           >
             Create
           </Link>
         </div>
-        <ul className="space-y-3">
+        <ul>
           {collections.map(collection => (
             <li key={collection.id}>
               <Link 
                 href={`/collections/${collection.id}`} 
-                className="block px-4 py-6 rounded-md hover:bg-slate-300 transition-colors duration-150 border border-slate-300"
+                className="block py-2 px-2 hover:bg-slate-200 transition-colors duration-150 rounded-lg mx-2"
               >
                 <h3 className="font-bold">{collection.name}</h3>
               </Link>

@@ -8,7 +8,7 @@ export default function CollectionsLayout({
 }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b border-slate-300 px-4 py-4 flex items-center justify-between">
+      <header className="border-b border-slate-300 px-6 py-4 flex items-center justify-between">
         <img 
           src="/images/s-logo.svg" alt="Shelf Logo" 
           className="h-10"
