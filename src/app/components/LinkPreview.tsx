@@ -24,7 +24,7 @@ export default function LinkPreview({ linkPreview, onDelete}: LinkPreviewProps) 
             <img 
               src={image} 
               alt={`Thumbnail for ${title}`} 
-              className="w-[60px] h-[60px] object-cover" 
+              className="w-[60px] h-[60px] object-cover rounded-lg" 
             />
         )}
         <div className="flex flex-col justify-center pl-3 pr-3">
