@@ -102,7 +102,11 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       />
       {linkPreviews.length > 0 && (
         <div>
-          <LinkPreviewList linkPreviews={linkPreviews} onDelete={deletePreview} />
+          <LinkPreviewList 
+            linkPreviews={linkPreviews} 
+            onDelete={deletePreview} 
+            isEditing={true}
+          />
         </div>
       )}
       {error && <p className="text-red-500 mb-4">{error}</p>}
