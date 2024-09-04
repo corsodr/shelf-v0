@@ -6,10 +6,9 @@ type LinkPreview = APIPreview | DBLinkPreview;
 interface LinkPreviewListProps {
   linkPreviews: LinkPreview[];
   onDelete?: (index: number) => void;
-  isEditing?: boolean;
 }
 
-export default function LinkPreviewList({ linkPreviews, onDelete, isEditing = false }: LinkPreviewListProps) {
+export default function LinkPreviewList({ linkPreviews, onDelete }: LinkPreviewListProps) {
   return (
     <div>
       {linkPreviews.map((linkPreview, index) => (
@@ -17,7 +16,6 @@ export default function LinkPreviewList({ linkPreviews, onDelete, isEditing = fa
           key={('id' in linkPreview) ? linkPreview.id : `${linkPreview.url}-${index}`}
           linkPreview={linkPreview}
           onDelete={onDelete ? () => onDelete(index) : undefined}
-          isEditing={isEditing}
         />
       ))}
     </div>

@@ -105,7 +105,6 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
           <LinkPreviewList 
             linkPreviews={linkPreviews} 
             onDelete={deletePreview} 
-            isEditing={true}
           />
         </div>
       )}

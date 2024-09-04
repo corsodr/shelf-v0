@@ -35,7 +35,7 @@ export default function CollectionView({ collection }: CollectionViewProps) {
     <div className="max-w-[700px]">
       <h1 className="text-3xl font-bold py-3 mb-2 mr-3">{name}</h1>
       {linkPreviews && linkPreviews.length > 0 ? (
-        <LinkPreviewList linkPreviews={linkPreviews} isEditing={false} />
+        <LinkPreviewList linkPreviews={linkPreviews} />
       ) : (
         <p>This collection is empty.</p>
       )}
