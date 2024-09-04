@@ -90,7 +90,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
   };
 
   return (
-    <form onSubmit={submitCollection} className="flex flex-col w-[700px]">
+    <form onSubmit={submitCollection} className="flex flex-col max-w-[700px]">
       <input 
         type="text" 
         placeholder="Name"
