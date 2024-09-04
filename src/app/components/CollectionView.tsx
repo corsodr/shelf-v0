@@ -32,8 +32,8 @@ export default function CollectionView({ collection }: CollectionViewProps) {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold py-3 mb-2">{name}</h1>
+    <div className="w-[700px]">
+      <h1 className="text-3xl font-bold py-3 mb-2 mr-3">{name}</h1>
       {linkPreviews && linkPreviews.length > 0 ? (
         <LinkPreviewList linkPreviews={linkPreviews} />
       ) : (
