@@ -45,11 +45,10 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
-      const title = link.replace(/^https?:\/\/(www\.)?/, '');
       const fallbackPreview: APIPreview = {
         url: link,
         domain: '',
-        title: title,
+        title: link,
         favicon: '',
         description: '',
         image: ''
