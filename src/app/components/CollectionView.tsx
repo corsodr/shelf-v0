@@ -41,13 +41,13 @@ export default function CollectionView({ collection }: CollectionViewProps) {
       )}
        <div className="flex gap-3 mt-6">
           <button 
-            className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded"
+            className="bg-slate-500 hover:bg-slate-700 text-white font-medium py-2 px-5 rounded-lg"
             onClick={handleEdit}
           >
             Edit
           </button>
           <button
-            className="bg-slate-300 hover:bg-slate-500 font-medium py-2 px-5 rounded"
+            className="bg-slate-300 hover:bg-slate-500 font-medium py-2 px-5 rounded-lg"
             onClick={handleDelete}
           >
             Delete
