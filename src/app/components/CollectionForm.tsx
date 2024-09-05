@@ -45,7 +45,17 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       setLink('');
     } catch (error) {
       console.error('Error fetching preview', error);
-      setError('Unable to create link preview. Please try again.');
+      const title = link.replace(/^https?:\/\/(www\.)?/, '');
+      const fallbackPreview: APIPreview = {
+        url: link,
+        domain: '',
+        title: title,
+        favicon: '',
+        description: '',
+        image: ''
+      };
+      setLinkPreviews((prevPreviews) => [...prevPreviews, fallbackPreview]);
+      setLink('');
     }
   }
 
