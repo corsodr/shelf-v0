@@ -1,10 +1,8 @@
 'use client'
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import LinkPreviewList from '@/app/components/LinkPreviewList';
-import { APIPreview } from '@/app/types/types';
-import { DBLinkPreview } from "@/app/types/types";
-import { DBCollection } from "@/app/types/types";
+import DndLinkPreviewList from '@/app/components/DndLinkPreviewList';
+import { APIPreview, DBLinkPreview, DBCollection } from '@/app/types/types';
 
 interface CollectionFormProps {
   currentCollection?: DBCollection 
@@ -62,6 +60,10 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
     setLinkPreviews((prevPreviews) => prevPreviews.filter((_, index) => index !== indexToDelete));
   }
 
+  const handleReorder = (newOrder: LinkPreview[]) => {
+    setLinkPreviews(newOrder);
+  };
+
   const submitCollection = async (e: React.FormEvent) => {
     e.preventDefault();
     if (linkPreviews.length === 0) {
@@ -111,8 +113,9 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       />
       {linkPreviews.length > 0 && (
         <div>
-          <LinkPreviewList 
+          <DndLinkPreviewList 
             linkPreviews={linkPreviews} 
+            onReorder={handleReorder}
             onDelete={deletePreview} 
           />
         </div>
