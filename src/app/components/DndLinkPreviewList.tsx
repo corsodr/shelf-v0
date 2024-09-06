@@ -1,8 +1,17 @@
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import DndLinkPreview from '@/app/components/DndLinkPreview';
+import { APIPreview, DBLinkPreview } from '@/app/types/types';
 
-export  default function DndLinkPreviewList({ linkPreviews, onReorder, onDelete }) {
+type LinkPreviewType = APIPreview | DBLinkPreview;
+
+interface DndLinkPreviewListProps {
+  linkPreviews: LinkPreviewType[];
+  onReorder: (newOrder: LinkPreviewType[]) => void;
+  onDelete?: (index: number) => void;
+}
+
+export default function DndLinkPreviewList({ linkPreviews, onReorder, onDelete }: DndLinkPreviewListProps) {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -10,12 +19,12 @@ export  default function DndLinkPreviewList({ linkPreviews, onReorder, onDelete 
     })
   );
 
-  function handleDragEnd(event: any) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       const oldIndex = linkPreviews.findIndex(item => item.url === active.id);
-      const newIndex = linkPreviews.findIndex(item => item.url === over.id);
+      const newIndex = linkPreviews.findIndex(item => item.url === over?.id);
       const newOrder = arrayMove(linkPreviews, oldIndex, newIndex);
       onReorder(newOrder);
     }

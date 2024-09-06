@@ -1,15 +1,9 @@
 import React from 'react';
-import { X } from 'lucide-react';
 import { APIPreview, DBLinkPreview } from '@/app/types/types';
 
 type LinkPreview = APIPreview | DBLinkPreview;
 
-interface LinkPreviewProps {
-  linkPreview: LinkPreview;
-  onDelete?: () => void;
-}
-
-export default function LinkPreview({ linkPreview, onDelete}: LinkPreviewProps) {
+export default function LinkPreview({ linkPreview }: { linkPreview: LinkPreview }) {
   const { url, domain, title, image } = linkPreview;
 
   return (
@@ -32,15 +26,6 @@ export default function LinkPreview({ linkPreview, onDelete}: LinkPreviewProps) 
           <p className="text-sm text-slate-500">{domain}</p>
         </div>
       </a>
-      {onDelete && (
-        <button
-          type="button"
-          onClick={onDelete}
-          className="flex items-center"
-        >
-          <X size={16} className="text-slate-500 hover:text-slate-700" />
-        </button>
-      )}
     </div>
   );
 }

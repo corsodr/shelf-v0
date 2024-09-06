@@ -9,18 +9,9 @@ export interface APIPreview {
 
 export interface DBLinkPreview extends APIPreview {
   id: number; 
+  createdAt: string;
 }
 
-export interface DBLinkPreview {
-    id: number;
-    url: string;
-    title: string;
-    domain: string;
-    favicon: string;
-    description: string;
-    image: string;
-    createdAt: string;
-  }
   export interface DBCollection {
     id: number;
     name: string;

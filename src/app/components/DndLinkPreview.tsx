@@ -1,11 +1,15 @@
-// why I do need this component 
-// 
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { X } from 'lucide-react';
+import { APIPreview, DBLinkPreview } from '../types/types';
 
-export default function DndLinkPreview({ linkPreview, onDelete }) {
+interface DndLinkPreviewProps {
+  linkPreview: APIPreview | DBLinkPreview;
+  onDelete?: () => void;
+}
+
+export default function DndLinkPreview({ linkPreview, onDelete }: DndLinkPreviewProps) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: linkPreview.url });
 
   const style = {
@@ -39,7 +43,7 @@ export default function DndLinkPreview({ linkPreview, onDelete }) {
           onClick={onDelete}
           className="flex items-center"
         >
-          <X size={16} className="text-slate-500 hover:text-slate-700" />
+          <X size={20} className="text-slate-500 hover:text-slate-700" />
         </button>
       )}
     </div>
