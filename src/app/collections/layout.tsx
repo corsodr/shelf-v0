@@ -17,7 +17,7 @@ export default function CollectionsLayout({
       </header>
       <div className="flex flex-1">
         <CollectionList />
-        <main className="px-8 py-4">
+        <main className="px-12 py-4">
           {children}
         </main>
       </div>

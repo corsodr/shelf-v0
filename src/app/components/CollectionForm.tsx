@@ -112,7 +112,7 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         required
       />
       {linkPreviews.length > 0 && (
-        <div>
+        <div className="mb-4 -ml-8"> 
           <DndLinkPreviewList 
             linkPreviews={linkPreviews} 
             onReorder={handleReorder}
@@ -121,14 +121,13 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
         </div>
       )}
       {error && <p className="text-red-500 mb-4">{error}</p>}
-      <div className="flex gap-3
-       mb-4">
+      <div className="flex gap-3 mb-4">
         <input 
           type="url" 
           placeholder="Link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="border border-gray-400 px-3 py-2 rounded-lg w-full"
+          className="border border-gray-400 px-3 py-2 rounded-lg flex-grow"
         />
         <button 
           type="button"
@@ -156,3 +155,4 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
     </form>
   );
 }
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { X } from 'lucide-react';
+import { X, GripVertical } from 'lucide-react';
 import { APIPreview, DBLinkPreview } from '../types/types';
 
 interface DndLinkPreviewProps {
@@ -18,7 +18,10 @@ export default function DndLinkPreview({ linkPreview, onDelete }: DndLinkPreview
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners} className="flex items-stretch mb-4 cursor-move">
+    <div ref={setNodeRef} style={style} className="relative flex items-stretch mb-4 pl-8"> 
+      <div {...attributes} {...listeners} className="absolute left-2 top-0 bottom-0 flex items-center">
+        <GripVertical size={20} className="text-slate-400" />
+      </div>
       <a 
         href={linkPreview.url}
         target="_blank"
