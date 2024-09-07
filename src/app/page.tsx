@@ -19,7 +19,7 @@ export default async function Home() {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8 flex flex-col justify-start items-center mt-16">
-        <h1 className="text-6xl font-bold mb-10 text-center">
+        <h1 className="text-6xl font-semibold mb-10 text-center">
           Collect anything
           <br />
           with Shelf 

@@ -11,7 +11,7 @@ export default async function CollectionsPage() {
 
   const collections: DBCollection[] = await getCollections();
 
-  if (collections.length === 0) {
+  if (collections.length === 0) { 
     return (
       <h1 className='text-xl font-bold'>Create your first collection.</h1>
     )
