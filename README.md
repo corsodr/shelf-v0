@@ -6,4 +6,4 @@ Shipped a web app for creating collections.
 
 Currently getting user feedback, polishing existing functionality, and designing social features.
 
-Try it out: https://try-shelf.com/
+https://try-shelf.com/
