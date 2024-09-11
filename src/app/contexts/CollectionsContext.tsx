@@ -2,11 +2,12 @@
 import { createContext, useState, useContext } from 'react';
 import { DBCollection } from '@/app/types/types';
 
-// review this typing 
+// simplify typing 
 type CollectionsContextType = {
   collections: DBCollection[];
   setCollections: React.Dispatch<React.SetStateAction<DBCollection[]>>;
   currentCollection: DBCollection | null;
+  // should this be DBCollection? review how currentCollection works 
   setCurrentCollection: React.Dispatch<React.SetStateAction<DBCollection | null>>;
   isCreating: boolean;
   setIsCreating: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +15,7 @@ type CollectionsContextType = {
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+// why use undefined? 
 const CollectionsContext = createContext<CollectionsContextType | undefined>(undefined);
 
 export const CollectionsProvider: React.FC<{ children: React.ReactNode, initialCollections: DBCollection[] }> = ({ children, initialCollections }) => {
