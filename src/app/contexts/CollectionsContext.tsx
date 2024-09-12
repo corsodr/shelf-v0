@@ -1,3 +1,5 @@
+'use client'
+
 // review this code - understand how it works 
 import { createContext, useState, useContext } from 'react';
 import { DBCollection } from '@/app/types/types';

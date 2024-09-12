@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import LinkPreviewList from '@/app/components/LinkPreviewList';
 import { DBCollection } from "@/app/types/types";
+import { useCollections } from '@/app/contexts/CollectionsContext';
 
 interface CollectionViewProps {
   collection: DBCollection;
@@ -9,16 +10,18 @@ interface CollectionViewProps {
 
 export default function CollectionView({ collection }: CollectionViewProps) {
   const router = useRouter();
+  const { setCurrentCollection, setIsEditing } = useCollections();
   
   const { name, linkPreviews } = collection;
 
   const handleEdit = () => {
-    router.push(`/collections/${collection.id}/update`);
+    setCurrentCollection(collection);
+    setIsEditing(true);
   }
 
   const handleDelete = async () => {
     try {
-      const response = await fetch (`/api/collections/${collection.id}`, {
+      const response = await fetch(`/api/collections/${collection.id}`, {
         method: 'DELETE',
       });
 
