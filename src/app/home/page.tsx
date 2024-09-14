@@ -19,23 +19,18 @@ export default function HomePage() {
 
   const { collections, currentCollection, isCreating, isEditing } = useCollections();
 
+  // fix type error 
+  if (isCreating || (currentCollection && isEditing)) {
+    return <CollectionForm currentCollection={currentCollection} />;
+  }
+
   if (collections.length === 0) {
-    return <div>Create your first colleciton</div>;
+    return <div>Create your first collection</div>;
   }
 
   if (collections.length) {
     return <CollectionView collection={collections[0]} />;
   }
-
-  if (isCreating) {
-    return <CollectionForm />;
-  }
-
-  // why is the currentCollection check necessary 
-  if (currentCollection && isEditing) {
-    return <CollectionForm currentCollection={currentCollection} />;
-  }
-
 }
 
 

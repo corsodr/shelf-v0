@@ -1,6 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import DndLinkPreviewList from '@/app/components/DndLinkPreviewList';
 import { APIPreview, DBLinkPreview, DBCollection } from '@/app/types/types';
 import { useCollections } from '@/app/contexts/CollectionsContext';
@@ -17,20 +16,11 @@ type LinkPreview = APIPreview | DBLinkPreview;
 
 export default function CollectionForm({ currentCollection }: CollectionFormProps) {
   const { currentCollection: collection, setCurrentCollection, setIsCreating, setIsEditing } = useCollections();
-  const [name, setName] = useState(collection?.name || '');
+  const [name, setName] = useState(currentCollection?.name || '');
   const [link, setLink] = useState('');
-  const [linkPreviews, setLinkPreviews] = useState<LinkPreview[]>(collection?.linkPreviews || []);
+  const [linkPreviews, setLinkPreviews] = useState<LinkPreview[]>(currentCollection?.linkPreviews || []);
   const [error, setError] = useState<string | null>(null);
   
-  const router = useRouter();
-  
-  useEffect(() => {
-    if (collection) {
-      setName(collection.name);
-      setLinkPreviews(collection.linkPreviews);
-    }
-  }, [collection]);
-
   const fetchPreview = async () => {
     setError(null);
 
@@ -104,8 +94,6 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       setCurrentCollection(null);
       setIsCreating(false);
       setIsEditing(false);
-      router.push(`/collections/${result.id}`);
-      router.refresh();
     } catch (error) {
       console.error(`Error ${collection ? 'updating' : 'submitting'} collection:`, error);
       setError(`Failed to ${collection ? 'update' : 'create'} collection. Please try again.`);
@@ -116,7 +104,6 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
     setCurrentCollection(null);
     setIsCreating(false);
     setIsEditing(false);
-    router.push('/collections');
   };
 
   return (

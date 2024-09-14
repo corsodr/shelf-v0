@@ -3,10 +3,13 @@
 // confirn link only works for server components
 // check if I should use Next router here
 
+import Link from 'next/link';
 import { useCollections } from '@/app/contexts/CollectionsContext';
+import { useRouter } from 'next/navigation';
 
 export default function CollectionList() {
   const { collections, setCurrentCollection, setIsCreating, setIsEditing } = useCollections();
+  const router = useRouter();
 
   const handleCreateClick = () => {
     setIsCreating(true);
@@ -18,6 +21,7 @@ export default function CollectionList() {
     setCurrentCollection(collection);
     setIsCreating(false);
     setIsEditing(false);
+    router.push(`/collections/${collection.id}`);
   };
 
   return (
