@@ -3,7 +3,7 @@ import { useState } from "react";
 import DndLinkPreviewList from '@/app/components/DndLinkPreviewList';
 import { APIPreview, DBLinkPreview, DBCollection } from '@/app/types/types';
 import { useCollections } from '@/app/contexts/CollectionsContext';
-import { useRouter } from 'next/navigation';  // Change this import
+import { useRouter } from 'next/navigation';  
 
 interface CollectionFormProps {
   currentCollection?: DBCollection 
@@ -95,7 +95,6 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       const result: CollectionResult = await response.json();
       
       if (currentCollection) {
-        // Handle update
         setIsEditing(false);
       } else {
         // Handle create

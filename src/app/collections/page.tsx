@@ -9,8 +9,7 @@ import CollectionForm from '@/app/components/CollectionForm';
 
 export default function HomePage() {
   const { data: session, status } = useSession();
-
-  // check this 
+ 
   useEffect(() => {
     if (status === 'unauthenticated') {
       redirect('/');
@@ -19,18 +18,18 @@ export default function HomePage() {
 
   const { collections, currentCollection, isCreating, isEditing } = useCollections();
 
-  // fix type error 
-  if (isCreating || (currentCollection && isEditing)) {
-    return <CollectionForm currentCollection={currentCollection} />;
-  }
-
   if (collections.length === 0) {
     return <h1>Create your first collection</h1>;
   }
 
-  if (collections.length) {
+  if (collections.length && !currentCollection) {
     return <CollectionView collection={collections[0]} />;
   }
+
+  if (isCreating || (currentCollection && isEditing)) {
+    return <CollectionForm currentCollection={currentCollection} />;
+  }
+  
 }
 
 

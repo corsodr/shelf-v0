@@ -10,14 +10,12 @@ export default function CollectionPage() {
   const { id } = useParams();
   const router = useRouter();
   const { collections, currentCollection, setCurrentCollection, isEditing } = useCollections();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCollection = () => {
       const collection = collections.find(c => c.id.toString() === id);
       if (collection) {
         setCurrentCollection(collection);
-        setLoading(false);
       } else {
         // Redirect to the main collections page if the collection is not found
         router.push('/collections');
@@ -37,10 +35,6 @@ export default function CollectionPage() {
       router.push(`/collections/${nextCollection.id}`);
     }
   }, [collections, id, router]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (isEditing) {
     return <CollectionForm currentCollection={currentCollection} />;

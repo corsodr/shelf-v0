@@ -21,19 +21,14 @@ export default function CollectionView({ collection }: CollectionViewProps) {
 
   const handleDelete = async () => {
     try {
-      console.log('Before deletion:', collections);
       await deleteCollection(collection.id);
-      console.log('After deletion:', collections);
   
       const updatedCollections = collections.filter(c => c.id !== collection.id);
-      console.log('Updated collections:', updatedCollections);
   
       if (updatedCollections.length > 0) {
         const nextCollection = updatedCollections[0];
-        console.log('Navigating to:', `/collections/${nextCollection.id}`);
         router.push(`/collections/${nextCollection.id}`);
       } else {
-        console.log('Navigating to: /collections');
         router.push('/collections');
       }
     } catch (error) {

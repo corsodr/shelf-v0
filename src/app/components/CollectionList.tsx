@@ -1,8 +1,5 @@
 'use client'
 
-// confirn link only works for server components
-// check if I should use Next router here
-
 import Link from 'next/link';
 import { useCollections } from '@/app/contexts/CollectionsContext';
 import { useRouter } from 'next/navigation';
