@@ -10,7 +10,7 @@ interface CollectionViewProps {
 
 export default function CollectionView({ collection }: CollectionViewProps) {
   const router = useRouter();
-  const { setCurrentCollection, setIsEditing } = useCollections();
+  const { setCurrentCollection, setIsEditing, collections, deleteCollection } = useCollections();
   
   const { name, linkPreviews } = collection;
 
@@ -21,13 +21,20 @@ export default function CollectionView({ collection }: CollectionViewProps) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/collections/${collection.id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
+      console.log('Before deletion:', collections);
+      await deleteCollection(collection.id);
+      console.log('After deletion:', collections);
+  
+      const updatedCollections = collections.filter(c => c.id !== collection.id);
+      console.log('Updated collections:', updatedCollections);
+  
+      if (updatedCollections.length > 0) {
+        const nextCollection = updatedCollections[0];
+        console.log('Navigating to:', `/collections/${nextCollection.id}`);
+        router.push(`/collections/${nextCollection.id}`);
+      } else {
+        console.log('Navigating to: /collections');
         router.push('/collections');
-        router.refresh();
       }
     } catch (error) {
       console.error('Error deleting collection:', error);

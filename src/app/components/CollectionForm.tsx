@@ -3,6 +3,7 @@ import { useState } from "react";
 import DndLinkPreviewList from '@/app/components/DndLinkPreviewList';
 import { APIPreview, DBLinkPreview, DBCollection } from '@/app/types/types';
 import { useCollections } from '@/app/contexts/CollectionsContext';
+import { useRouter } from 'next/navigation';  // Change this import
 
 interface CollectionFormProps {
   currentCollection?: DBCollection 
@@ -15,7 +16,8 @@ interface CollectionResult {
 type LinkPreview = APIPreview | DBLinkPreview;
 
 export default function CollectionForm({ currentCollection }: CollectionFormProps) {
-  const { currentCollection: collection, setCurrentCollection, setIsCreating, setIsEditing } = useCollections();
+  const router = useRouter();
+  const { addCollection, setIsEditing, setIsCreating, setCurrentCollection, collections } = useCollections();
   const [name, setName] = useState(currentCollection?.name || '');
   const [link, setLink] = useState('');
   const [linkPreviews, setLinkPreviews] = useState<LinkPreview[]>(currentCollection?.linkPreviews || []);
@@ -71,8 +73,8 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
     }
     setError(null);
 
-    const url = collection ? `/api/collections/${collection.id}` : '/api/collections';
-    const method = collection ? 'PUT' : 'POST';
+    const url = currentCollection ? `/api/collections/${currentCollection.id}` : '/api/collections';
+    const method = currentCollection ? 'PUT' : 'POST';
 
     try {
       const response = await fetch(url, {
@@ -87,23 +89,50 @@ export default function CollectionForm({ currentCollection }: CollectionFormProp
       });
   
       if (!response.ok) {
-        throw new Error(`Failed to ${collection ? 'update' : 'create'} collection. Status: ${response.status}`);
+        throw new Error(`Failed to ${currentCollection ? 'update' : 'create'} collection. Status: ${response.status}`);
       }
       
       const result: CollectionResult = await response.json();
-      setCurrentCollection(null);
-      setIsCreating(false);
-      setIsEditing(false);
+      
+      if (currentCollection) {
+        // Handle update
+        setIsEditing(false);
+      } else {
+        // Handle create
+        const newCollection: DBCollection = {
+          id: result.id,
+          name,
+          linkPreviews: linkPreviews.map((preview, index) => ({
+            ...preview,
+            id: index, // This is a temporary ID, you might want to use the actual ID from the server
+            createdAt: new Date().toISOString()
+          }))
+        };
+        addCollection(newCollection);
+        router.push(`/collections/${result.id}`);
+      }
     } catch (error) {
-      console.error(`Error ${collection ? 'updating' : 'submitting'} collection:`, error);
-      setError(`Failed to ${collection ? 'update' : 'create'} collection. Please try again.`);
+      console.error(`Error ${currentCollection ? 'updating' : 'creating'} collection:`, error);
+      setError(`Failed to ${currentCollection ? 'update' : 'create'} collection. Please try again.`);
     }
   };
 
   const handleCancel = () => {
-    setCurrentCollection(null);
     setIsCreating(false);
     setIsEditing(false);
+    
+    if (currentCollection) {
+      // If editing an existing collection, go back to that collection's page
+      router.push(`/collections/${currentCollection.id}`);
+    } else {
+      // If creating a new collection, go to the first collection or the main collections page
+      const firstCollection = collections[0];
+      if (firstCollection) {
+        router.push(`/collections/${firstCollection.id}`);
+      } else {
+        router.push('/collections');
+      }
+    }
   };
 
   return (

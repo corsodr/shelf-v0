@@ -15,13 +15,7 @@ export default function CollectionList() {
     setIsCreating(true);
     setIsEditing(false);
     setCurrentCollection(null);
-  };
-
-  const handleCollectionClick = (collection) => {
-    setCurrentCollection(collection);
-    setIsCreating(false);
-    setIsEditing(false);
-    router.push(`/collections/${collection.id}`);
+    router.push('/collections');
   };
 
   return (
@@ -38,12 +32,12 @@ export default function CollectionList() {
         <ul>
           {collections.map(collection => (
             <li key={collection.id}>
-              <button 
-                onClick={() => handleCollectionClick(collection)}
+              <Link 
+                href={`/collections/${collection.id}`}
                 className="block w-full text-left py-2 px-3 hover:bg-slate-200 transition-colors duration-150 rounded-lg mx-3"
               >
                 <h3 className="font-semibold">{collection.name}</h3>
-              </button>
+              </Link>
             </li>
           ))}
         </ul>

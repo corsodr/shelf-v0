@@ -25,7 +25,7 @@ export default function HomePage() {
   }
 
   if (collections.length === 0) {
-    return <div>Create your first collection</div>;
+    return <h1>Create your first collection</h1>;
   }
 
   if (collections.length) {

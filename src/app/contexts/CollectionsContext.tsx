@@ -4,17 +4,17 @@
 import { createContext, useState, useContext } from 'react';
 import { DBCollection } from '@/app/types/types';
 
-// simplify typing 
 type CollectionsContextType = {
   collections: DBCollection[];
   setCollections: React.Dispatch<React.SetStateAction<DBCollection[]>>;
   currentCollection: DBCollection | null;
-  // should this be DBCollection? review how currentCollection works 
   setCurrentCollection: React.Dispatch<React.SetStateAction<DBCollection | null>>;
   isCreating: boolean;
   setIsCreating: React.Dispatch<React.SetStateAction<boolean>>;
   isEditing: boolean;
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+  addCollection: (newCollection: DBCollection) => void;
+  deleteCollection: (id: number) => Promise<void>;
 };
 
 // why use undefined? 
@@ -26,6 +26,32 @@ export const CollectionsProvider: React.FC<{ children: React.ReactNode, initialC
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  const addCollection = (newCollection: DBCollection) => {
+    setCollections(prevCollections => [...prevCollections, newCollection]);
+    setCurrentCollection(newCollection);
+    setIsCreating(false);
+  };
+
+  const deleteCollection = async (id: number) => {
+    try {
+      const response = await fetch(`/api/collections/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        setCollections(prevCollections => {
+          console.log('Updating collections state');
+          return prevCollections.filter(c => c.id !== id);
+        });
+      } else {
+        throw new Error('Failed to delete collection');
+      }
+    } catch (error) {
+      console.error('Error deleting collection:', error);
+      throw error;
+    }
+  };
+
   return (
     <CollectionsContext.Provider value={{ 
       collections, 
@@ -35,7 +61,9 @@ export const CollectionsProvider: React.FC<{ children: React.ReactNode, initialC
       isCreating,
       setIsCreating,
       isEditing,
-      setIsEditing
+      setIsEditing,
+      addCollection,
+      deleteCollection
     }}>
       {children}
     </CollectionsContext.Provider>
