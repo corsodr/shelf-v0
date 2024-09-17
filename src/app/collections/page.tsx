@@ -7,7 +7,7 @@ import { useCollections } from '@/app/contexts/CollectionsContext';
 import CollectionView from '@/app/components/CollectionView';
 import CollectionForm from '@/app/components/CollectionForm';
 
-export default function HomePage() {
+export default function CollectionsPage() {
   const { data: session, status } = useSession();
  
   useEffect(() => {
@@ -18,6 +18,10 @@ export default function HomePage() {
 
   const { collections, currentCollection, isCreating, isEditing } = useCollections();
 
+  if (isCreating || isEditing) {
+    return <CollectionForm currentCollection={isEditing ? currentCollection : undefined} />;
+  }
+
   if (collections.length === 0) {
     return <h1>Create your first collection</h1>;
   }
@@ -26,10 +30,7 @@ export default function HomePage() {
     return <CollectionView collection={collections[0]} />;
   }
 
-  if (isCreating || (currentCollection && isEditing)) {
-    return <CollectionForm currentCollection={currentCollection} />;
-  }
-  
+  return null;
 }
 
 

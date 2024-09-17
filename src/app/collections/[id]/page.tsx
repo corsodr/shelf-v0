@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useCollections } from '@/app/contexts/CollectionsContext';
 import CollectionView from '@/app/components/CollectionView';
@@ -10,12 +10,16 @@ export default function CollectionPage() {
   const { id } = useParams();
   const router = useRouter();
   const { collections, currentCollection, setCurrentCollection, isEditing } = useCollections();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCollection = () => {
       const collection = collections.find(c => c.id.toString() === id);
       if (collection) {
         setCurrentCollection(collection);
+        setIsLoading(false);
+      } else if (collections.length > 0) {
+        router.push(`/collections/${collections[0].id}`);
       } else {
         router.push('/collections');
       }
@@ -24,14 +28,9 @@ export default function CollectionPage() {
     fetchCollection();
   }, [id, collections, setCurrentCollection, router]);
 
-  useEffect(() => {
-    if (collections.length === 0) {
-      router.push('/collections');
-    } else if (!collections.some(c => c.id.toString() === id)) {
-      const nextCollection = collections[0];
-      router.push(`/collections/${nextCollection.id}`);
-    }
-  }, [collections, id, router]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (isEditing) {
     return <CollectionForm currentCollection={currentCollection} />;

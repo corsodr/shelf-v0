@@ -11,7 +11,7 @@ export default function CollectionList() {
   const handleCreateClick = () => {
     setIsCreating(true);
     setIsEditing(false);
-    setCurrentCollection(null);
+    setCurrentCollection(undefined);
     router.push('/collections');
   };
 
