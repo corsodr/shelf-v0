@@ -42,6 +42,7 @@ export async function getCollections(): Promise<DBCollection[]> {
   }
 }
 
+// delete? 
 export async function getCollection(collectionId: string): Promise<DBCollection> {
   const session = await auth();
 

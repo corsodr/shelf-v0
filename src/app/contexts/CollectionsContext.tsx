@@ -1,14 +1,13 @@
 'use client'
 
-// review this code - understand how it works 
 import { createContext, useState, useContext } from 'react';
 import { DBCollection } from '@/app/types/types';
 
 type CollectionsContextType = {
   collections: DBCollection[];
   setCollections: React.Dispatch<React.SetStateAction<DBCollection[]>>;
-  currentCollection: DBCollection | null;
-  setCurrentCollection: React.Dispatch<React.SetStateAction<DBCollection | null>>;
+  currentCollection: DBCollection | undefined;
+  setCurrentCollection: React.Dispatch<React.SetStateAction<DBCollection | undefined>>;
   isCreating: boolean;
   setIsCreating: React.Dispatch<React.SetStateAction<boolean>>;
   isEditing: boolean;
@@ -17,12 +16,11 @@ type CollectionsContextType = {
   deleteCollection: (id: number) => Promise<void>;
 };
 
-// why use undefined? 
 const CollectionsContext = createContext<CollectionsContextType | undefined>(undefined);
 
 export const CollectionsProvider: React.FC<{ children: React.ReactNode, initialCollections: DBCollection[] }> = ({ children, initialCollections }) => {
   const [collections, setCollections] = useState<DBCollection[]>(initialCollections);
-  const [currentCollection, setCurrentCollection] = useState<DBCollection | null>(null);
+  const [currentCollection, setCurrentCollection] = useState<DBCollection | undefined>(undefined);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
