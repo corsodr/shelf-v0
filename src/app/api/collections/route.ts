@@ -28,7 +28,6 @@ export async function POST(req: Request) {
 
     const collectionId = collectionResult.rows[0].id;
 
-    // review bulk insert 
     await sql`
       INSERT INTO link_previews (collection_id, url, title, domain, favicon, description, image)
       SELECT ${collectionId}, url, title, domain, favicon, description, image
